@@ -6,449 +6,444 @@
 <title>Día 3 — West Side & Downtown</title>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700;9..144,900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700;9..144,900&family=Inter:wght@400;500;600;700&display=swap');
-
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-
 :root{
-  --bg:#0f1115;
-  --bg-soft:#161922;
-  --paper:#1b1f2a;
-  --paper-soft:#20242f;
-  --ink:#f3f1ec;
-  --ink-soft:#a8a4ba;
-  --line:#2c3040;
-  --accent:#e8623f;
-  --accent-soft:rgba(232,98,63,0.14);
-  --teal:#4fd1ae;
-  --gold:#f0b94d;
-  --violet:#8b7fd6;
-  --radius:18px;
+  --bg:#0f1115;--paper:#1b1f2a;--paper-soft:#20242f;
+  --ink:#f3f1ec;--ink-soft:#a8a4ba;--line:#2c3040;
+  --accent:#e8623f;--accent-soft:rgba(232,98,63,0.14);
+  --teal:#4fd1ae;--gold:#f0b94d;--violet:#8b7fd6;
 }
-
 html{scroll-behavior:smooth;}
 body{
-  background:
-    radial-gradient(circle at 12% 8%, rgba(139,127,214,0.16), transparent 42%),
-    radial-gradient(circle at 88% 18%, rgba(232,98,63,0.14), transparent 45%),
-    radial-gradient(circle at 50% 95%, rgba(79,209,174,0.10), transparent 50%),
+  background:radial-gradient(circle at 12% 8%,rgba(139,127,214,.16),transparent 42%),
+    radial-gradient(circle at 88% 18%,rgba(232,98,63,.14),transparent 45%),
+    radial-gradient(circle at 50% 95%,rgba(79,209,174,.10),transparent 50%),
     var(--bg);
   background-attachment:fixed;
-  color:var(--ink);
-  font-family:'Inter',sans-serif;
-  line-height:1.5;
+  color:var(--ink);font-family:'Inter',sans-serif;line-height:1.5;
 }
-
 a{color:inherit;}
-
-/* ============ TOP NAV (breadcrumb style) ============ */
 .topbar{
-  position:sticky;
-  top:0;
-  z-index:200;
-  background:rgba(15,17,21,0.78);
-  backdrop-filter:blur(14px);
+  position:sticky;top:0;z-index:200;
+  background:rgba(15,17,21,.82);backdrop-filter:blur(14px);
   border-bottom:1px solid var(--line);
-  padding:0 32px;
-  height:60px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
+  padding:0 32px;height:60px;
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  flex-wrap:wrap;
 }
-
-.crumbs{
-  display:flex;
-  align-items:center;
-  gap:8px;
-  font-size:13px;
-  font-weight:500;
-  color:var(--ink-soft);
-}
-
-.crumbs a{text-decoration:none; transition:color .15s;}
-.crumbs a:hover{color:var(--accent);}
-.crumbs .sep{color:var(--line); font-size:11px;}
-.crumbs .current{color:var(--ink); font-weight:700;}
-
 .brand-mark{
-  display:flex;
-  align-items:center;
-  gap:8px;
-  font-family:'Fraunces',serif;
-  font-weight:700;
-  font-size:15px;
-  text-decoration:none;
-  color:var(--ink);
+  display:flex;align-items:center;gap:8px;
+  font-family:'Fraunces',serif;font-weight:700;font-size:22px;
+  text-decoration:none;color:var(--ink);
 }
 .brand-mark .star{color:var(--accent);}
-
-.day-pills{
-  display:flex;
-  gap:6px;
-}
+.crumbs{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:500;color:var(--ink-soft);}
+.crumbs a{text-decoration:none;transition:color .15s;}
+.crumbs a:hover{color:var(--accent);}
+.crumbs .sep{color:var(--line);}
+.crumbs .current{color:var(--ink);font-weight:700;}
+.day-pills{display:flex;gap:6px;flex-shrink:0;}
 .day-pills a{
-  text-decoration:none;
-  font-size:12.5px;
-  font-weight:600;
-  padding:7px 14px;
-  border-radius:20px;
-  color:var(--ink-soft);
-  border:1px solid var(--line);
-  transition:all .15s;
-  white-space:nowrap;
+  text-decoration:none;font-size:12.5px;font-weight:600;
+  padding:7px 14px;border-radius:20px;
+  color:var(--ink-soft);border:1px solid var(--line);transition:all .15s;white-space:nowrap;
 }
-.day-pills a:hover{border-color:var(--accent); color:var(--accent);}
-.day-pills a.active{background:linear-gradient(135deg, var(--accent), #c8492f); color:#fff; border-color:transparent; box-shadow:0 4px 14px rgba(232,98,63,0.35);}
+.day-pills a:hover{border-color:var(--accent);color:var(--accent);}
+.day-pills a.active{background:linear-gradient(135deg,var(--accent),#c8492f);color:#fff;border-color:transparent;box-shadow:0 4px 14px rgba(232,98,63,.35);}
 
-@media (max-width:760px){
-  .topbar{padding:0 16px; flex-wrap:wrap; height:auto; padding-top:10px; padding-bottom:10px; gap:8px;}
-  .day-pills{overflow-x:auto;}
+/* LANG TOGGLE */
+.lang-btn{
+  display:flex;gap:4px;flex-shrink:0;
 }
+.lang-btn button{
+  background:none;border:1px solid var(--line);color:var(--ink-soft);
+  padding:5px 11px;border-radius:8px;font-size:12px;font-weight:600;cursor:pointer;transition:all .15s;
+}
+.lang-btn button.active{background:var(--accent);color:#fff;border-color:var(--accent);}
+[lang-content]{transition:opacity .2s;}
 
-/* ============ SECTIONS GENERIC ============ */
-.wrap{max-width:1100px; margin:0 auto; padding:0 32px;}
-@media (max-width:600px){.wrap{padding:0 18px;}}
-
+.wrap{max-width:1100px;margin:0 auto;padding:0 32px;}
 .eyebrow{
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-  font-size:11.5px;
-  letter-spacing:2px;
-  text-transform:uppercase;
-  color:var(--accent);
-  font-weight:700;
-  margin-bottom:18px;
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:11.5px;letter-spacing:2px;text-transform:uppercase;
+  color:var(--accent);font-weight:700;margin-bottom:18px;
 }
-.eyebrow::before{content:''; width:24px; height:1px; background:var(--accent);}
+.eyebrow::before{content:'';width:24px;height:1px;background:var(--accent);}
+.title-xl{font-family:'Fraunces',serif;font-weight:900;letter-spacing:-2px;line-height:.95;color:var(--ink);}
+.title-lg{font-family:'Fraunces',serif;font-weight:700;letter-spacing:-1px;line-height:1.05;color:var(--ink);}
 
-.title-xl{
-  font-family:'Fraunces',serif;
-  font-weight:900;
-  letter-spacing:-2px;
-  line-height:0.95;
-  color:var(--ink);
-}
-
-.title-lg{
-  font-family:'Fraunces',serif;
-  font-weight:700;
-  letter-spacing:-1px;
-  line-height:1.05;
-  color:var(--ink);
-}
-
-/* ============ MAP CARD ============ */
-.map-section{
-  padding:50px 0 70px;
-}
-.map-card{
-  background:linear-gradient(160deg, var(--paper-soft), var(--paper));
-  border:1px solid var(--line);
-  border-radius:24px;
-  padding:20px;
-  box-shadow:0 24px 60px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.03);
-}
-.map-card svg{display:block; width:100%; height:auto; border-radius:14px;}
-
-.map-route-list{
-  margin-top:20px;
-  display:flex;
-  flex-wrap:wrap;
-  gap:10px;
-}
+/* MAP */
+.map-section{padding:50px 0 70px;}
+.map-card{background:linear-gradient(160deg,var(--paper-soft),var(--paper));border:1px solid var(--line);border-radius:24px;padding:20px;box-shadow:0 24px 60px rgba(0,0,0,.35);}
+.leaflet-map{border-radius:14px;overflow:hidden;height:480px;}
+.map-route-list{margin-top:16px;display:flex;flex-wrap:wrap;gap:10px;}
 .route-chip{
-  display:flex;
-  align-items:center;
-  gap:8px;
-  background:var(--paper-soft);
-  border:1px solid var(--line);
-  border-radius:30px;
-  padding:6px 14px 6px 6px;
-  font-size:12.5px;
-  font-weight:600;
-  color:var(--ink-soft);
-  text-decoration:none;
-  transition:border-color .15s, color .15s, transform .15s;
+  display:flex;align-items:center;gap:8px;
+  background:var(--paper-soft);border:1px solid var(--line);
+  border-radius:30px;padding:6px 14px 6px 6px;
+  font-size:12.5px;font-weight:600;color:var(--ink-soft);
+  text-decoration:none;transition:all .15s;
 }
-.route-chip:hover{border-color:var(--accent); color:var(--ink); transform:translateY(-1px);}
+.route-chip:hover{border-color:var(--accent);color:var(--ink);}
 .route-num{
-  width:22px;height:22px;
-  border-radius:50%;
-  background:var(--accent);
-  color:#fff;
-  font-size:11px;
-  font-weight:700;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  flex-shrink:0;
+  width:22px;height:22px;border-radius:50%;background:var(--accent);
+  color:#fff;font-size:10px;font-weight:700;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
 }
+.gmap-btn{
+  display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:#fff;
+  text-decoration:none;padding:11px 22px;border-radius:30px;font-size:13px;font-weight:600;
+  box-shadow:0 4px 16px rgba(232,98,63,.35);transition:transform .15s;white-space:nowrap;
+}
+.gmap-btn:hover{transform:translateY(-2px);}
 
-/* ============ STOP DETAIL CARDS ============ */
+/* STOPS */
 .stops-section{padding:20px 0 80px;}
-
 .stop-detail{
-  display:grid;
-  grid-template-columns:280px 1fr;
-  gap:0;
-  background:linear-gradient(160deg, var(--paper-soft), var(--paper));
-  border:1px solid var(--line);
-  border-radius:20px;
-  overflow:hidden;
-  margin-bottom:20px;
-  transition:border-color .2s, box-shadow .2s;
+  display:grid;grid-template-columns:280px 1fr;
+  background:linear-gradient(160deg,var(--paper-soft),var(--paper));
+  border:1px solid var(--line);border-radius:20px;overflow:hidden;
+  margin-bottom:20px;transition:border-color .2s,box-shadow .2s;
 }
-.stop-detail:hover{border-color:rgba(232,98,63,0.35); box-shadow:0 20px 50px rgba(0,0,0,0.3);}
-
-.stop-detail-img{
-  background-size:cover;
-  background-position:center;
-  min-height:220px;
-  position:relative;
-}
-
+.stop-detail:hover{border-color:rgba(232,98,63,.35);box-shadow:0 20px 50px rgba(0,0,0,.3);}
+.stop-detail-img{background-size:cover;background-position:center;min-height:220px;position:relative;}
 .stop-detail-num{
-  position:absolute;
-  top:14px; left:14px;
-  width:34px;height:34px;
-  border-radius:50%;
-  background:var(--accent);
-  color:#fff;
-  font-family:'Fraunces',serif;
-  font-weight:700;
-  font-size:15px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  box-shadow:0 4px 10px rgba(0,0,0,0.25);
+  position:absolute;top:14px;left:14px;width:34px;height:34px;
+  border-radius:50%;background:var(--accent);color:#fff;
+  font-family:'Fraunces',serif;font-weight:700;font-size:15px;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 10px rgba(0,0,0,.25);
 }
-
-.stop-detail-body{
-  padding:26px 30px;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-}
-
-.stop-detail-time{
-  font-size:11.5px;
-  font-weight:700;
-  letter-spacing:1.5px;
-  text-transform:uppercase;
-  color:var(--teal);
-  margin-bottom:8px;
-}
-
-.stop-detail-name{
-  font-family:'Fraunces',serif;
-  font-weight:700;
-  font-size:24px;
-  color:var(--ink);
-  margin-bottom:10px;
-}
-
-.stop-detail-desc{
-  font-size:14.5px;
-  color:var(--ink-soft);
-  line-height:1.7;
-  margin-bottom:14px;
-}
-
+.stop-detail-body{padding:26px 30px;display:flex;flex-direction:column;justify-content:center;}
+.stop-detail-time{font-size:11.5px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--teal);margin-bottom:8px;}
+.stop-detail-name{font-family:'Fraunces',serif;font-weight:700;font-size:24px;color:var(--ink);margin-bottom:10px;}
+.stop-detail-desc{font-size:14.5px;color:var(--ink-soft);line-height:1.7;margin-bottom:14px;}
 .ticket-box{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  background:var(--accent-soft);
-  border:1px solid rgba(232,98,63,0.25);
-  border-radius:12px;
-  padding:12px 16px;
-  margin-top:6px;
+  display:flex;align-items:center;gap:12px;
+  background:var(--accent-soft);border:1px solid rgba(232,98,63,.25);
+  border-radius:12px;padding:12px 16px;margin-top:6px;
 }
-.ticket-box.free{background:rgba(79,209,174,0.1); border-color:rgba(79,209,174,0.25);}
-.ticket-box .ico{font-size:18px; flex-shrink:0;}
-.ticket-box .txt{font-size:12.5px; color:var(--ink); line-height:1.5;}
-.ticket-box .txt strong{display:block; font-size:13px; margin-bottom:2px; color:var(--ink);}
-.ticket-box a{color:var(--accent); font-weight:700; text-decoration:none;}
+.ticket-box.free{background:rgba(79,209,174,.1);border-color:rgba(79,209,174,.25);}
+.ticket-box .ico{font-size:18px;flex-shrink:0;}
+.ticket-box .txt{font-size:12.5px;color:var(--ink);line-height:1.5;}
+.ticket-box .txt strong{display:block;font-size:13px;margin-bottom:2px;}
+.ticket-box a{color:var(--accent);font-weight:700;text-decoration:none;}
 .ticket-box.free a{color:var(--teal);}
 .ticket-box a:hover{text-decoration:underline;}
 
-@media (max-width:760px){
+/* DAY NAV */
+.day-nav-footer{display:flex;justify-content:space-between;gap:16px;padding:40px 0 80px;flex-wrap:wrap;}
+.day-nav-btn{
+  flex:1;min-width:220px;
+  background:linear-gradient(160deg,var(--paper-soft),var(--paper));
+  border:1px solid var(--line);border-radius:16px;padding:20px 24px;
+  text-decoration:none;transition:border-color .15s,transform .15s;
+}
+.day-nav-btn:hover{border-color:var(--accent);transform:translateY(-2px);}
+.day-nav-btn .lbl{font-size:11px;text-transform:uppercase;letter-spacing:1.5px;color:var(--ink-soft);margin-bottom:4px;}
+.day-nav-btn .ttl{font-family:'Fraunces',serif;font-weight:700;font-size:18px;color:var(--ink);}
+.day-nav-btn.next{text-align:right;}
+footer.site-footer{text-align:center;padding:40px 24px;color:var(--ink-soft);font-size:12.5px;border-top:1px solid var(--line);}
+
+@media(max-width:760px){
   .stop-detail{grid-template-columns:1fr;}
   .stop-detail-img{min-height:180px;}
+  .topbar{height:auto;padding:10px 16px;}
 }
-
-/* ============ FOOTER NAV (prev/next day) ============ */
-.day-nav-footer{
-  display:flex;
-  justify-content:space-between;
-  gap:16px;
-  padding:40px 0 80px;
-  flex-wrap:wrap;
-}
-.day-nav-btn{
-  flex:1;
-  min-width:220px;
-  background:linear-gradient(160deg, var(--paper-soft), var(--paper));
-  border:1px solid var(--line);
-  border-radius:16px;
-  padding:20px 24px;
-  text-decoration:none;
-  transition:border-color .15s, transform .15s;
-}
-.day-nav-btn:hover{border-color:var(--accent); transform:translateY(-2px);}
-.day-nav-btn .lbl{font-size:11px; text-transform:uppercase; letter-spacing:1.5px; color:var(--ink-soft); margin-bottom:4px;}
-.day-nav-btn .ttl{font-family:'Fraunces',serif; font-weight:700; font-size:18px; color:var(--ink);}
-.day-nav-btn.next{text-align:right;}
-
-footer.site-footer{
-  text-align:center;
-  padding:40px 24px;
-  color:var(--ink-soft);
-  font-size:12.5px;
-  border-top:1px solid var(--line);
-}
-.day-hero{padding:50px 0 10px;position:relative;}
-.day-hero::before{content:'';position:absolute;top:-30px;left:5%;width:500px;height:300px;background:radial-gradient(circle,rgba(232,98,63,0.14),transparent 65%);pointer-events:none;z-index:0;}
-.day-hero .title-lg{font-size:clamp(34px,5vw,52px);position:relative;color:#fff;}
-.day-hero .sub{font-size:14.5px;color:var(--ink-soft);margin-top:10px;max-width:560px;position:relative;}
-.gmap-wrap{border-radius:18px;overflow:hidden;border:1px solid var(--line);box-shadow:0 24px 60px rgba(0,0,0,0.4);}
-.gmap-wrap iframe{display:block;width:100%;height:480px;border:0;}
-.gmap-btn{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:#fff;text-decoration:none;padding:11px 22px;border-radius:30px;font-size:13px;font-weight:600;box-shadow:0 4px 16px rgba(232,98,63,0.35);transition:transform .15s;}
-.gmap-btn:hover{transform:translateY(-2px);}
+@media(max-width:600px){.wrap{padding:0 18px;}}
 </style>
+
 </head>
 <body>
+
 <header class="topbar">
-  <a href="../index.html" class="brand-mark"><span class="star">✦</span> Vacaciones</a>
-  <div class="crumbs"><a href="../index.html">Inicio</a><span class="sep">/</span><a href="index.html">New York</a><span class="sep">/</span><span class="current">Día 3</span></div>
+  <a href="../../index.html" class="brand-mark"><span class="star">✦</span> Vacaciones</a>
+  <div class="crumbs">
+    <a href="../../index.html" data-es="Inicio" data-en="Home">Inicio</a><span class="sep">/</span>
+    <a href="../index.html">New York</a><span class="sep">/</span>
+    <span class="current" data-es="Día 3" data-en="Day 3">Día 3</span>
+  </div>
   <div class="day-pills"><a href="dia1.html">Día 1</a><a href="dia2.html">Día 2</a><a href="dia3.html" class="active">Día 3</a></div>
+  <div class="lang-btn">
+    <button data-l="es" onclick="setLang('es')" class="active">ES</button>
+    <button data-l="en" onclick="setLang('en')">EN</button>
+  </div>
 </header>
 
-<section class="day-hero">
+<section style="padding:50px 0 10px;position:relative;">
+  <div style="position:absolute;top:-30px;left:5%;width:500px;height:300px;background:radial-gradient(circle,rgba(232,98,63,.14),transparent 65%);pointer-events:none;z-index:0;"></div>
   <div class="wrap">
-    <div class="eyebrow">Día 3 · West Side & Downtown</div>
-    <h1 class="title-lg">Hudson Yards al Little Italy</h1>
-    <p class="sub">Empiezas en las alturas de Hudson Yards, bajas por la High Line, y cierras el viaje en SoHo, Chinatown y Little Italy.</p>
+    <div class="eyebrow" data-es="Día 3 · West Side &amp; Downtown" data-en="Day 3 · West Side &amp; Downtown">Día 3 · West Side &amp; Downtown</div>
+    <h1 class="title-lg" style="font-size:clamp(34px,5vw,52px);color:#fff;" data-es="Hudson Yards al Little Italy" data-en="Hudson Yards to Little Italy">Hudson Yards al Little Italy</h1>
+    <p style="font-size:14.5px;color:var(--ink-soft);margin-top:10px;max-width:560px;" data-es="Empiezas en las alturas de Hudson Yards, bajas por la High Line, y cierras en SoHo, Chinatown y Little Italy." data-en="Start at the heights of Hudson Yards, walk down the High Line, and finish in SoHo, Chinatown and Little Italy.">Empiezas en las alturas de Hudson Yards, bajas por la High Line, y cierras en SoHo, Chinatown y Little Italy.</p>
   </div>
 </section>
-
-<section class="map-section">
-  <div class="wrap">
-    <div class="map-card">
-      <div class="gmap-wrap">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m62!1m12!1m3!1d15310.0!2d-74.0060!3d40.7280!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m47!3e2!4m5!1s0x89c259b6a970b29d%3A0x90ed53a6a731957e!2sHudson+Yards%2C+New+York!3m2!1d40.7534!2d-74.0011!4m5!1s0x89c259b4160028ab%3A0x414b171aac155dc0!2sVessel%2C+20+Hudson+Yards%2C+New+York!3m2!1d40.7538!2d-74.0022!4m5!1s0x89c259c7840fb4e5%3A0x583f615c850a3c91!2sHigh+Line%2C+New+York!3m2!1d40.7480!2d-74.0048!4m5!1s0x89c259319989e02f%3A0xbc9fdbef8d2af7b0!2sLittle+Island%2C+New+York!3m2!1d40.7420!2d-74.0103!4m5!1s0x89c259bf144c69c3%3A0x7e61762e972dc0a2!2sChelsea+Market%2C+75+9th+Ave%2C+New+York!3m2!1d40.7424!2d-74.0061!4m5!1s0x89c25904af4dbf6f%3A0x9742aaaefd6a009c!2s66+Perry+St%2C+New+York!3m2!1d40.7354!2d-74.0038!4m5!1s0x89c2598c5e51e2f3%3A0xce2f3449f490f818!2sSoHo%2C+New+York!3m2!1d40.7246!2d-74.0019!4m5!1s0x89c259f56c2fc10d%3A0xcf9e1370cd1f3111!2sChinatown%2C+New+York!3m2!1d40.7158!2d-73.9970!4m5!1s0x89c2598845057def%3A0x9ecf1b969fbbb484!2sLittle+Italy%2C+New+York!3m2!1d40.7191!2d-73.9973!5e0!3m2!1ses!2sus!4v1700000003" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-      </div>
-      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-top:16px;">
-        <div class="map-route-list" style="margin-top:0;">
-          <a href="#s1" class="route-chip"><span class="route-num">1</span> Hudson Yards</a>
-          <a href="#s2" class="route-chip"><span class="route-num">2</span> Vessel</a>
-          <a href="#s3" class="route-chip"><span class="route-num">3</span> High Line</a>
-          <a href="#s4" class="route-chip"><span class="route-num">4</span> Little Island</a>
-          <a href="#s5" class="route-chip"><span class="route-num">5</span> Chelsea Market</a>
-          <a href="#s6" class="route-chip"><span class="route-num">6</span> 66 Perry St</a>
-          <a href="#s7" class="route-chip"><span class="route-num">7</span> SoHo</a>
-          <a href="#s8" class="route-chip"><span class="route-num">8</span> Chinatown</a>
-          <a href="#s9" class="route-chip"><span class="route-num">9</span> Little Italy</a>
-        </div>
-        <a class="gmap-btn" href="https://www.google.com/maps/dir/Hudson+Yards+New+York/Vessel+20+Hudson+Yards/High+Line+New+York/Little+Island+New+York/Chelsea+Market+75+9th+Ave/66+Perry+St+New+York/SoHo+New+York/Chinatown+New+York/Little+Italy+New+York" target="_blank">🗺️ Abrir en Google Maps</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="stops-section">
-  <div class="wrap">
-    <div class="stop-detail" id="s1">
-      <div class="stop-detail-img" style="background-image:url('https://images.unsplash.com/photo-1590169026702-d6dd7e1e455a?w=500&q=80')"><div class="stop-detail-num">1</div></div>
-      <div class="stop-detail-body">
-        <div class="stop-detail-time">9:00 AM</div>
-        <div class="stop-detail-name">Hudson Yards</div>
-        <p class="stop-detail-desc">El desarrollo urbano más nuevo de Manhattan. Arquitectura moderna y punto de partida del día.</p>
-        <div class="ticket-box free"><div class="ico">✅</div><div class="txt"><strong>Acceso libre</strong>Plaza pública, sin costo.</div></div>
-      </div>
-    </div>
-    <div class="stop-detail" id="s2">
-      <div class="stop-detail-img" style="background-image:url('https://images.unsplash.com/photo-1575535468340-345c808fdfd0?w=500&q=80')"><div class="stop-detail-num">2</div></div>
-      <div class="stop-detail-body">
-        <div class="stop-detail-time">9:20 AM</div>
-        <div class="stop-detail-name">Vessel</div>
-        <p class="stop-detail-desc">La estructura icónica en forma de panal de 16 pisos, símbolo visual de Hudson Yards.</p>
-        <div class="ticket-box"><div class="ico">🎟️</div><div class="txt"><strong>Verificar disponibilidad</strong><a href="https://www.hudsonyardsnewyork.com/discover/vessel" target="_blank">hudsonyardsnewyork.com →</a></div></div>
-      </div>
-    </div>
-    <div class="stop-detail" id="s3">
-      <div class="stop-detail-img" style="background-image:url('https://images.unsplash.com/photo-1555636222-cae831e670b3?w=500&q=80')"><div class="stop-detail-num">3</div></div>
-      <div class="stop-detail-body">
-        <div class="stop-detail-time">10:00 AM</div>
-        <div class="stop-detail-name">High Line</div>
-        <p class="stop-detail-desc">Parque elevado sobre una antigua vía de tren. Jardines colgantes con vistas únicas de la ciudad.</p>
-        <div class="ticket-box free"><div class="ico">✅</div><div class="txt"><strong>Entrada gratuita</strong>Parque público elevado.</div></div>
-      </div>
-    </div>
-    <div class="stop-detail" id="s4">
-      <div class="stop-detail-img" style="background-image:url('https://images.unsplash.com/photo-1622396636133-ba6e3c5c44b9?w=500&q=80')"><div class="stop-detail-num">4</div></div>
-      <div class="stop-detail-body">
-        <div class="stop-detail-time">1:00 PM</div>
-        <div class="stop-detail-name">Little Island</div>
-        <p class="stop-detail-desc">Parque flotante futurista sobre el Hudson River. Jardines, colinas artificiales y vistas al río.</p>
-        <div class="ticket-box free"><div class="ico">✅</div><div class="txt"><strong>Entrada gratuita</strong>Solo en eventos especiales se requiere ticket.</div></div>
-      </div>
-    </div>
-    <div class="stop-detail" id="s5">
-      <div class="stop-detail-img" style="background-image:url('https://images.unsplash.com/photo-1565123409695-7b5ef63a2efb?w=500&q=80')"><div class="stop-detail-num">5</div></div>
-      <div class="stop-detail-body">
-        <div class="stop-detail-time">1:45 PM · Almuerzo</div>
-        <div class="stop-detail-name">Chelsea Market</div>
-        <p class="stop-detail-desc">Mercado gourmet con más de 35 tiendas. Los Tacos No. 1 son legendarios — el mejor almuerzo del viaje.</p>
-        <div class="ticket-box free"><div class="ico">✅</div><div class="txt"><strong>Entrada gratuita</strong>Pagas solo lo que consumes.</div></div>
-      </div>
-    </div>
-    <div class="stop-detail" id="s6">
-      <div class="stop-detail-img" style="background-image:url('https://images.unsplash.com/photo-1555529771-122e5d9f2341?w=500&q=80')"><div class="stop-detail-num">6</div></div>
-      <div class="stop-detail-body">
-        <div class="stop-detail-time">3:00 PM</div>
-        <div class="stop-detail-name">66 Perry Street</div>
-        <p class="stop-detail-desc">La fachada de la casa de Carrie Bradshaw. West Village — calles adoquinadas y brownstones históricos.</p>
-        <div class="ticket-box free"><div class="ico">✅</div><div class="txt"><strong>Solo fachada exterior</strong>Residencia privada — respeta a los vecinos.</div></div>
-      </div>
-    </div>
-    <div class="stop-detail" id="s7">
-      <div class="stop-detail-img" style="background-image:url('https://images.unsplash.com/photo-1508009603885-50cf7c579365?w=500&q=80')"><div class="stop-detail-num">7</div></div>
-      <div class="stop-detail-body">
-        <div class="stop-detail-time">3:40 PM</div>
-        <div class="stop-detail-name">SoHo</div>
-        <p class="stop-detail-desc">Calles empedradas, arquitectura de hierro fundido y boutiques de diseño. Uno de los barrios más elegantes.</p>
-        <div class="ticket-box free"><div class="ico">✅</div><div class="txt"><strong>Acceso libre</strong>Barrio público.</div></div>
-      </div>
-    </div>
-    <div class="stop-detail" id="s8">
-      <div class="stop-detail-img" style="background-image:url('https://images.unsplash.com/photo-1583842761329-21f04bf65871?w=500&q=80')"><div class="stop-detail-num">8</div></div>
-      <div class="stop-detail-body">
-        <div class="stop-detail-time">4:30 PM</div>
-        <div class="stop-detail-name">Chinatown</div>
-        <p class="stop-detail-desc">Comida increíble y económica. Canal Street y Mott Street son el corazón del barrio.</p>
-        <div class="ticket-box free"><div class="ico">✅</div><div class="txt"><strong>Acceso libre</strong>Barrio público.</div></div>
-      </div>
-    </div>
-    <div class="stop-detail" id="s9">
-      <div class="stop-detail-img" style="background-image:url('https://images.unsplash.com/photo-1555109307-f7d9da25c244?w=500&q=80')"><div class="stop-detail-num">9</div></div>
-      <div class="stop-detail-body">
-        <div class="stop-detail-time">5:15 PM · Cierre</div>
-        <div class="stop-detail-name">Little Italy</div>
-        <p class="stop-detail-desc">Mulberry Street. Café o gelato obligatorio para cerrar los 3 días de NYC.</p>
-        <div class="ticket-box free"><div class="ico">✅</div><div class="txt"><strong>Acceso libre</strong>Barrio público.</div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="wrap">
-  <div class="day-nav-footer">
-    <a href="dia2.html" class="day-nav-btn"><div class="lbl">← Anterior</div><div class="ttl">Día 2 — Brooklyn & Downtown</div></a>
-    <a href="index.html" class="day-nav-btn next"><div class="lbl">Volver a →</div><div class="ttl">New York</div></a>
+<section class="map-section"><div class="wrap">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<style>
+#map_d3{height:480px;border-radius:14px;}
+.pin-label{
+  background:var(--accent);color:#fff;border:2px solid #fff;
+  border-radius:50%;width:28px;height:28px;
+  display:flex;align-items:center;justify-content:center;
+  font-weight:700;font-size:13px;font-family:Fraunces,serif;
+  box-shadow:0 3px 10px rgba(232,98,63,.5);
+}
+</style>
+<div class="map-card">
+  <div id="map_d3"></div>
+  <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-top:16px;">
+    <div class="map-route-list" style="margin-top:0;"><a href="#s1" class="route-chip"><span class="route-num">1</span> Hudson Yards</a><a href="#s2" class="route-chip"><span class="route-num">2</span> Vessel</a><a href="#s3" class="route-chip"><span class="route-num">3</span> High Line</a><a href="#s4" class="route-chip"><span class="route-num">4</span> The Edge</a><a href="#s5" class="route-chip"><span class="route-num">5</span> Little Island</a><a href="#s6" class="route-chip"><span class="route-num">6</span> Chelsea Market</a><a href="#s7" class="route-chip"><span class="route-num">7</span> 66 Perry Street</a><a href="#s8" class="route-chip"><span class="route-num">8</span> SoHo</a><a href="#s9" class="route-chip"><span class="route-num">9</span> Chinatown</a><a href="#s10" class="route-chip"><span class="route-num">10</span> Little Italy</a></div>
+    <a class="gmap-btn" href="https://www.google.com/maps/dir/Hudson+Yards+New+York/Vessel+Hudson+Yards/High+Line+New+York/Little+Island+New+York/Chelsea+Market/66+Perry+St+New+York/SoHo+New+York/Chinatown+New+York/Little+Italy+New+York" target="_blank">🗺️ <span data-es="Abrir en Google Maps" data-en="Open in Google Maps">Abrir en Google Maps</span></a>
   </div>
 </div>
-<footer class="site-footer">New York · Día 3 de 3</footer>
+<script>
+function pinIcon(n){
+  return L.divIcon({
+    className:'',
+    html:'<div class="pin-label">'+n+'</div>',
+    iconSize:[28,28],iconAnchor:[14,14]
+  });
+}
+var map_d3 = L.map('map_d3').setView([40.728,-74.004],14);
+L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',{
+  attribution:'&copy; OpenStreetMap &copy; CARTO',maxZoom:19
+}).addTo(map_d3);
+
+    L.marker([40.7534, -74.0011], {icon: pinIcon('1')})
+      .addTo(map_d3)
+      .bindPopup('<b>1. Hudson Yards</b>');
+
+    L.marker([40.7538, -74.0022], {icon: pinIcon('2')})
+      .addTo(map_d3)
+      .bindPopup('<b>2. Vessel</b>');
+
+    L.marker([40.748, -74.0048], {icon: pinIcon('3')})
+      .addTo(map_d3)
+      .bindPopup('<b>3. High Line</b>');
+
+    L.marker([40.7535, -74.001], {icon: pinIcon('4')})
+      .addTo(map_d3)
+      .bindPopup('<b>4. The Edge</b>');
+
+    L.marker([40.742, -74.0103], {icon: pinIcon('5')})
+      .addTo(map_d3)
+      .bindPopup('<b>5. Little Island</b>');
+
+    L.marker([40.7424, -74.0061], {icon: pinIcon('6')})
+      .addTo(map_d3)
+      .bindPopup('<b>6. Chelsea Market</b>');
+
+    L.marker([40.7354, -74.0038], {icon: pinIcon('7')})
+      .addTo(map_d3)
+      .bindPopup('<b>7. 66 Perry Street</b>');
+
+    L.marker([40.7246, -74.0019], {icon: pinIcon('8')})
+      .addTo(map_d3)
+      .bindPopup('<b>8. SoHo</b>');
+
+    L.marker([40.7158, -73.997], {icon: pinIcon('9')})
+      .addTo(map_d3)
+      .bindPopup('<b>9. Chinatown</b>');
+
+    L.marker([40.7191, -73.9973], {icon: pinIcon('10')})
+      .addTo(map_d3)
+      .bindPopup('<b>10. Little Italy</b>');
+
+</script></div></section>
+<section class="stops-section"><div class="wrap">
+
+    <div class="stop-detail" id="s1">
+      <div class="stop-detail-img" style="background-image:url('https://images.unsplash.com/photo-1575535468340-345c808fdfd0?w=600&q=85')"><div class="stop-detail-num">1</div></div>
+      <div class="stop-detail-body">
+        <div class="stop-detail-time" data-es="9:00 AM" data-en="9:00 AM">9:00 AM</div>
+        <div class="stop-detail-name" data-es="Hudson Yards" data-en="Hudson Yards">Hudson Yards</div>
+        <p class="stop-detail-desc" data-es="El desarrollo urbano más nuevo de Manhattan. Arquitectura moderna y punto de partida del día." data-en="Manhattan's newest urban development. Modern architecture and the starting point of the day.">El desarrollo urbano más nuevo de Manhattan. Arquitectura moderna y punto de partida del día.</p>
+        
+        <div class="ticket-box free">
+          <div class="ico">✅</div>
+          <div class="txt">
+            <strong data-es="Acceso libre" data-en="Free access">Acceso libre</strong>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="stop-detail" id="s2">
+      <div class="stop-detail-img" style="background-image:url('https://images.unsplash.com/photo-1575535468340-345c808fdfd0?w=600&q=85')"><div class="stop-detail-num">2</div></div>
+      <div class="stop-detail-body">
+        <div class="stop-detail-time" data-es="9:20 AM" data-en="9:20 AM">9:20 AM</div>
+        <div class="stop-detail-name" data-es="Vessel" data-en="Vessel">Vessel</div>
+        <p class="stop-detail-desc" data-es="Estructura icónica en forma de panal de 16 pisos, símbolo visual de Hudson Yards." data-en="Iconic honeycomb-shaped 16-story structure, visual symbol of Hudson Yards.">Estructura icónica en forma de panal de 16 pisos, símbolo visual de Hudson Yards.</p>
+        
+        <div class="ticket-box">
+          <div class="ico">🎟️</div>
+          <div class="txt">
+            <strong data-es="Verificar disponibilidad" data-en="Check availability">Verificar disponibilidad</strong>
+             <a href="https://www.hudsonyardsnewyork.com/discover/vessel" target="_blank">www.hudsonyardsnewyork.com →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="stop-detail" id="s3">
+      <div class="stop-detail-img" style="background-image:url('https://images.unsplash.com/photo-1555636222-cae831e670b3?w=600&q=85')"><div class="stop-detail-num">3</div></div>
+      <div class="stop-detail-body">
+        <div class="stop-detail-time" data-es="10:00 AM" data-en="10:00 AM">10:00 AM</div>
+        <div class="stop-detail-name" data-es="High Line" data-en="High Line">High Line</div>
+        <p class="stop-detail-desc" data-es="Parque elevado sobre una antigua vía de tren con jardines colgantes y vistas únicas." data-en="Elevated park on a former rail line with hanging gardens and unique city views.">Parque elevado sobre una antigua vía de tren con jardines colgantes y vistas únicas.</p>
+        
+        <div class="ticket-box free">
+          <div class="ico">✅</div>
+          <div class="txt">
+            <strong data-es="Entrada gratuita" data-en="Free entry">Entrada gratuita</strong>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="stop-detail" id="s4">
+      <div class="stop-detail-img" style="background-image:url('https://images.unsplash.com/photo-1577415124269-fc1140a69e91?w=600&q=85')"><div class="stop-detail-num">4</div></div>
+      <div class="stop-detail-body">
+        <div class="stop-detail-time" data-es="11:00 AM" data-en="11:00 AM">11:00 AM</div>
+        <div class="stop-detail-name" data-es="The Edge" data-en="The Edge">The Edge</div>
+        <p class="stop-detail-desc" data-es="El deck al aire libre más alto del hemisferio occidental, con piso de cristal." data-en="The highest outdoor observation deck in the Western Hemisphere, with a glass floor.">El deck al aire libre más alto del hemisferio occidental, con piso de cristal.</p>
+        
+        <div class="ticket-box">
+          <div class="ico">🎟️</div>
+          <div class="txt">
+            <strong data-es="Ticket obligatorio" data-en="Ticket required">Ticket obligatorio</strong>
+             <a href="https://www.edgenyc.com" target="_blank">www.edgenyc.com →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="stop-detail" id="s5">
+      <div class="stop-detail-img" style="background-image:url('https://images.unsplash.com/photo-1622396636133-ba6e3c5c44b9?w=600&q=85')"><div class="stop-detail-num">5</div></div>
+      <div class="stop-detail-body">
+        <div class="stop-detail-time" data-es="1:00 PM" data-en="1:00 PM">1:00 PM</div>
+        <div class="stop-detail-name" data-es="Little Island" data-en="Little Island">Little Island</div>
+        <p class="stop-detail-desc" data-es="Parque flotante futurista sobre el Hudson River. Jardines y vistas al río — muy fotogénico." data-en="Futuristic floating park on the Hudson River. Gardens and river views — very photogenic.">Parque flotante futurista sobre el Hudson River. Jardines y vistas al río — muy fotogénico.</p>
+        
+        <div class="ticket-box free">
+          <div class="ico">✅</div>
+          <div class="txt">
+            <strong data-es="Entrada gratuita" data-en="Free entry">Entrada gratuita</strong>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="stop-detail" id="s6">
+      <div class="stop-detail-img" style="background-image:url('https://images.unsplash.com/photo-1565123409695-7b5ef63a2efb?w=600&q=85')"><div class="stop-detail-num">6</div></div>
+      <div class="stop-detail-body">
+        <div class="stop-detail-time" data-es="1:45 PM · Almuerzo" data-en="1:45 PM · Lunch">1:45 PM · Almuerzo</div>
+        <div class="stop-detail-name" data-es="Chelsea Market" data-en="Chelsea Market">Chelsea Market</div>
+        <p class="stop-detail-desc" data-es="Mercado gourmet con más de 35 tiendas. Los Tacos No. 1 son legendarios." data-en="Gourmet market with 35+ vendors. Los Tacos No. 1 are legendary.">Mercado gourmet con más de 35 tiendas. Los Tacos No. 1 son legendarios.</p>
+        
+        <div class="ticket-box free">
+          <div class="ico">✅</div>
+          <div class="txt">
+            <strong data-es="Entrada gratuita" data-en="Free entry">Entrada gratuita</strong>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="stop-detail" id="s7">
+      <div class="stop-detail-img" style="background-image:url('https://images.unsplash.com/photo-1555529771-122e5d9f2341?w=600&q=85')"><div class="stop-detail-num">7</div></div>
+      <div class="stop-detail-body">
+        <div class="stop-detail-time" data-es="3:00 PM" data-en="3:00 PM">3:00 PM</div>
+        <div class="stop-detail-name" data-es="66 Perry Street" data-en="66 Perry Street">66 Perry Street</div>
+        <p class="stop-detail-desc" data-es="La fachada de la casa de Carrie Bradshaw. West Village — calles adoquinadas históricas." data-en="Carrie Bradshaw's house facade. West Village — historic cobblestone streets.">La fachada de la casa de Carrie Bradshaw. West Village — calles adoquinadas históricas.</p>
+        
+        <div class="ticket-box free">
+          <div class="ico">✅</div>
+          <div class="txt">
+            <strong data-es="Solo fachada exterior" data-en="Exterior only">Solo fachada exterior</strong>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="stop-detail" id="s8">
+      <div class="stop-detail-img" style="background-image:url('https://images.unsplash.com/photo-1508009603885-50cf7c579365?w=600&q=85')"><div class="stop-detail-num">8</div></div>
+      <div class="stop-detail-body">
+        <div class="stop-detail-time" data-es="3:40 PM" data-en="3:40 PM">3:40 PM</div>
+        <div class="stop-detail-name" data-es="SoHo" data-en="SoHo">SoHo</div>
+        <p class="stop-detail-desc" data-es="Calles empedradas, arquitectura de hierro fundido y boutiques de diseño." data-en="Cobblestone streets, cast-iron architecture and designer boutiques.">Calles empedradas, arquitectura de hierro fundido y boutiques de diseño.</p>
+        
+        <div class="ticket-box free">
+          <div class="ico">✅</div>
+          <div class="txt">
+            <strong data-es="Acceso libre" data-en="Free access">Acceso libre</strong>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="stop-detail" id="s9">
+      <div class="stop-detail-img" style="background-image:url('https://images.unsplash.com/photo-1583842761329-21f04bf65871?w=600&q=85')"><div class="stop-detail-num">9</div></div>
+      <div class="stop-detail-body">
+        <div class="stop-detail-time" data-es="4:30 PM" data-en="4:30 PM">4:30 PM</div>
+        <div class="stop-detail-name" data-es="Chinatown" data-en="Chinatown">Chinatown</div>
+        <p class="stop-detail-desc" data-es="Comida increíble y económica. Canal Street y Mott Street son el corazón del barrio." data-en="Incredible and affordable food. Canal Street and Mott Street are the heart of the neighborhood.">Comida increíble y económica. Canal Street y Mott Street son el corazón del barrio.</p>
+        
+        <div class="ticket-box free">
+          <div class="ico">✅</div>
+          <div class="txt">
+            <strong data-es="Acceso libre" data-en="Free access">Acceso libre</strong>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="stop-detail" id="s10">
+      <div class="stop-detail-img" style="background-image:url('https://images.unsplash.com/photo-1555109307-f7d9da25c244?w=600&q=85')"><div class="stop-detail-num">10</div></div>
+      <div class="stop-detail-body">
+        <div class="stop-detail-time" data-es="5:15 PM · Cierre" data-en="5:15 PM · Closing">5:15 PM · Cierre</div>
+        <div class="stop-detail-name" data-es="Little Italy" data-en="Little Italy">Little Italy</div>
+        <p class="stop-detail-desc" data-es="Mulberry Street. Café o gelato obligatorio para cerrar los 3 días de NYC." data-en="Mulberry Street. Coffee or gelato is a must to close out 3 days in NYC.">Mulberry Street. Café o gelato obligatorio para cerrar los 3 días de NYC.</p>
+        
+        <div class="ticket-box free">
+          <div class="ico">✅</div>
+          <div class="txt">
+            <strong data-es="Acceso libre" data-en="Free access">Acceso libre</strong>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+</div></section>
+<div class="wrap"><div class="day-nav-footer">
+  <a href="dia2.html" class="day-nav-btn"><div class="lbl" data-es="← Anterior" data-en="← Previous">← Anterior</div><div class="ttl" data-es="Día 2 — Brooklyn" data-en="Day 2 — Brooklyn">Día 2 — Brooklyn</div></a>
+  <a href="../index.html" class="day-nav-btn next"><div class="lbl" data-es="Volver a →" data-en="Back to →">Volver a →</div><div class="ttl">New York</div></a>
+</div></div>
+<footer class="site-footer" data-es="New York · Día 3 de 3" data-en="New York · Day 3 of 3">New York · Día 3 de 3</footer>
+
+<script>
+function setLang(l){
+  document.querySelectorAll('[data-es]').forEach(el=>{
+    el.textContent = l==='es' ? el.dataset.es : el.dataset.en;
+  });
+  document.querySelectorAll('.lang-btn button').forEach(b=>{
+    b.classList.toggle('active', b.dataset.l===l);
+  });
+  localStorage.setItem('lang',l);
+}
+document.addEventListener('DOMContentLoaded',()=>{
+  setLang(localStorage.getItem('lang')||'es');
+});
+</script>
+
 </body>
 </html>

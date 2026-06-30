@@ -6,429 +6,381 @@
 <title>Día 1 — Harlem & Midtown</title>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700;9..144,900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700;9..144,900&family=Inter:wght@400;500;600;700&display=swap');
-
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-
 :root{
-  --bg:#0f1115;
-  --bg-soft:#161922;
-  --paper:#1b1f2a;
-  --paper-soft:#20242f;
-  --ink:#f3f1ec;
-  --ink-soft:#a8a4ba;
-  --line:#2c3040;
-  --accent:#e8623f;
-  --accent-soft:rgba(232,98,63,0.14);
-  --teal:#4fd1ae;
-  --gold:#f0b94d;
-  --violet:#8b7fd6;
-  --radius:18px;
+  --bg:#0f1115;--paper:#1b1f2a;--paper-soft:#20242f;
+  --ink:#f3f1ec;--ink-soft:#a8a4ba;--line:#2c3040;
+  --accent:#e8623f;--accent-soft:rgba(232,98,63,0.14);
+  --teal:#4fd1ae;--gold:#f0b94d;--violet:#8b7fd6;
 }
-
 html{scroll-behavior:smooth;}
 body{
-  background:
-    radial-gradient(circle at 12% 8%, rgba(139,127,214,0.16), transparent 42%),
-    radial-gradient(circle at 88% 18%, rgba(232,98,63,0.14), transparent 45%),
-    radial-gradient(circle at 50% 95%, rgba(79,209,174,0.10), transparent 50%),
+  background:radial-gradient(circle at 12% 8%,rgba(139,127,214,.16),transparent 42%),
+    radial-gradient(circle at 88% 18%,rgba(232,98,63,.14),transparent 45%),
+    radial-gradient(circle at 50% 95%,rgba(79,209,174,.10),transparent 50%),
     var(--bg);
   background-attachment:fixed;
-  color:var(--ink);
-  font-family:'Inter',sans-serif;
-  line-height:1.5;
+  color:var(--ink);font-family:'Inter',sans-serif;line-height:1.5;
 }
-
 a{color:inherit;}
-
-/* ============ TOP NAV (breadcrumb style) ============ */
 .topbar{
-  position:sticky;
-  top:0;
-  z-index:200;
-  background:rgba(15,17,21,0.78);
-  backdrop-filter:blur(14px);
+  position:sticky;top:0;z-index:200;
+  background:rgba(15,17,21,.82);backdrop-filter:blur(14px);
   border-bottom:1px solid var(--line);
-  padding:0 32px;
-  height:60px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
+  padding:0 32px;height:60px;
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  flex-wrap:wrap;
 }
-
-.crumbs{
-  display:flex;
-  align-items:center;
-  gap:8px;
-  font-size:13px;
-  font-weight:500;
-  color:var(--ink-soft);
-}
-
-.crumbs a{text-decoration:none; transition:color .15s;}
-.crumbs a:hover{color:var(--accent);}
-.crumbs .sep{color:var(--line); font-size:11px;}
-.crumbs .current{color:var(--ink); font-weight:700;}
-
 .brand-mark{
-  display:flex;
-  align-items:center;
-  gap:8px;
-  font-family:'Fraunces',serif;
-  font-weight:700;
-  font-size:15px;
-  text-decoration:none;
-  color:var(--ink);
+  display:flex;align-items:center;gap:8px;
+  font-family:'Fraunces',serif;font-weight:700;font-size:22px;
+  text-decoration:none;color:var(--ink);
 }
 .brand-mark .star{color:var(--accent);}
-
-.day-pills{
-  display:flex;
-  gap:6px;
-}
+.crumbs{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:500;color:var(--ink-soft);}
+.crumbs a{text-decoration:none;transition:color .15s;}
+.crumbs a:hover{color:var(--accent);}
+.crumbs .sep{color:var(--line);}
+.crumbs .current{color:var(--ink);font-weight:700;}
+.day-pills{display:flex;gap:6px;flex-shrink:0;}
 .day-pills a{
-  text-decoration:none;
-  font-size:12.5px;
-  font-weight:600;
-  padding:7px 14px;
-  border-radius:20px;
-  color:var(--ink-soft);
-  border:1px solid var(--line);
-  transition:all .15s;
-  white-space:nowrap;
+  text-decoration:none;font-size:12.5px;font-weight:600;
+  padding:7px 14px;border-radius:20px;
+  color:var(--ink-soft);border:1px solid var(--line);transition:all .15s;white-space:nowrap;
 }
-.day-pills a:hover{border-color:var(--accent); color:var(--accent);}
-.day-pills a.active{background:linear-gradient(135deg, var(--accent), #c8492f); color:#fff; border-color:transparent; box-shadow:0 4px 14px rgba(232,98,63,0.35);}
+.day-pills a:hover{border-color:var(--accent);color:var(--accent);}
+.day-pills a.active{background:linear-gradient(135deg,var(--accent),#c8492f);color:#fff;border-color:transparent;box-shadow:0 4px 14px rgba(232,98,63,.35);}
 
-@media (max-width:760px){
-  .topbar{padding:0 16px; flex-wrap:wrap; height:auto; padding-top:10px; padding-bottom:10px; gap:8px;}
-  .day-pills{overflow-x:auto;}
+/* LANG TOGGLE */
+.lang-btn{
+  display:flex;gap:4px;flex-shrink:0;
 }
+.lang-btn button{
+  background:none;border:1px solid var(--line);color:var(--ink-soft);
+  padding:5px 11px;border-radius:8px;font-size:12px;font-weight:600;cursor:pointer;transition:all .15s;
+}
+.lang-btn button.active{background:var(--accent);color:#fff;border-color:var(--accent);}
+[lang-content]{transition:opacity .2s;}
 
-/* ============ SECTIONS GENERIC ============ */
-.wrap{max-width:1100px; margin:0 auto; padding:0 32px;}
-@media (max-width:600px){.wrap{padding:0 18px;}}
-
+.wrap{max-width:1100px;margin:0 auto;padding:0 32px;}
 .eyebrow{
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-  font-size:11.5px;
-  letter-spacing:2px;
-  text-transform:uppercase;
-  color:var(--accent);
-  font-weight:700;
-  margin-bottom:18px;
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:11.5px;letter-spacing:2px;text-transform:uppercase;
+  color:var(--accent);font-weight:700;margin-bottom:18px;
 }
-.eyebrow::before{content:''; width:24px; height:1px; background:var(--accent);}
+.eyebrow::before{content:'';width:24px;height:1px;background:var(--accent);}
+.title-xl{font-family:'Fraunces',serif;font-weight:900;letter-spacing:-2px;line-height:.95;color:var(--ink);}
+.title-lg{font-family:'Fraunces',serif;font-weight:700;letter-spacing:-1px;line-height:1.05;color:var(--ink);}
 
-.title-xl{
-  font-family:'Fraunces',serif;
-  font-weight:900;
-  letter-spacing:-2px;
-  line-height:0.95;
-  color:var(--ink);
-}
-
-.title-lg{
-  font-family:'Fraunces',serif;
-  font-weight:700;
-  letter-spacing:-1px;
-  line-height:1.05;
-  color:var(--ink);
-}
-
-/* ============ MAP CARD ============ */
-.map-section{
-  padding:50px 0 70px;
-}
-.map-card{
-  background:linear-gradient(160deg, var(--paper-soft), var(--paper));
-  border:1px solid var(--line);
-  border-radius:24px;
-  padding:20px;
-  box-shadow:0 24px 60px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.03);
-}
-.map-card svg{display:block; width:100%; height:auto; border-radius:14px;}
-
-.map-route-list{
-  margin-top:20px;
-  display:flex;
-  flex-wrap:wrap;
-  gap:10px;
-}
+/* MAP */
+.map-section{padding:50px 0 70px;}
+.map-card{background:linear-gradient(160deg,var(--paper-soft),var(--paper));border:1px solid var(--line);border-radius:24px;padding:20px;box-shadow:0 24px 60px rgba(0,0,0,.35);}
+.leaflet-map{border-radius:14px;overflow:hidden;height:480px;}
+.map-route-list{margin-top:16px;display:flex;flex-wrap:wrap;gap:10px;}
 .route-chip{
-  display:flex;
-  align-items:center;
-  gap:8px;
-  background:var(--paper-soft);
-  border:1px solid var(--line);
-  border-radius:30px;
-  padding:6px 14px 6px 6px;
-  font-size:12.5px;
-  font-weight:600;
-  color:var(--ink-soft);
-  text-decoration:none;
-  transition:border-color .15s, color .15s, transform .15s;
+  display:flex;align-items:center;gap:8px;
+  background:var(--paper-soft);border:1px solid var(--line);
+  border-radius:30px;padding:6px 14px 6px 6px;
+  font-size:12.5px;font-weight:600;color:var(--ink-soft);
+  text-decoration:none;transition:all .15s;
 }
-.route-chip:hover{border-color:var(--accent); color:var(--ink); transform:translateY(-1px);}
+.route-chip:hover{border-color:var(--accent);color:var(--ink);}
 .route-num{
-  width:22px;height:22px;
-  border-radius:50%;
-  background:var(--accent);
-  color:#fff;
-  font-size:11px;
-  font-weight:700;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  flex-shrink:0;
+  width:22px;height:22px;border-radius:50%;background:var(--accent);
+  color:#fff;font-size:10px;font-weight:700;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
 }
+.gmap-btn{
+  display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:#fff;
+  text-decoration:none;padding:11px 22px;border-radius:30px;font-size:13px;font-weight:600;
+  box-shadow:0 4px 16px rgba(232,98,63,.35);transition:transform .15s;white-space:nowrap;
+}
+.gmap-btn:hover{transform:translateY(-2px);}
 
-/* ============ STOP DETAIL CARDS ============ */
+/* STOPS */
 .stops-section{padding:20px 0 80px;}
-
 .stop-detail{
-  display:grid;
-  grid-template-columns:280px 1fr;
-  gap:0;
-  background:linear-gradient(160deg, var(--paper-soft), var(--paper));
-  border:1px solid var(--line);
-  border-radius:20px;
-  overflow:hidden;
-  margin-bottom:20px;
-  transition:border-color .2s, box-shadow .2s;
+  display:grid;grid-template-columns:280px 1fr;
+  background:linear-gradient(160deg,var(--paper-soft),var(--paper));
+  border:1px solid var(--line);border-radius:20px;overflow:hidden;
+  margin-bottom:20px;transition:border-color .2s,box-shadow .2s;
 }
-.stop-detail:hover{border-color:rgba(232,98,63,0.35); box-shadow:0 20px 50px rgba(0,0,0,0.3);}
-
-.stop-detail-img{
-  background-size:cover;
-  background-position:center;
-  min-height:220px;
-  position:relative;
-}
-
+.stop-detail:hover{border-color:rgba(232,98,63,.35);box-shadow:0 20px 50px rgba(0,0,0,.3);}
+.stop-detail-img{background-size:cover;background-position:center;min-height:220px;position:relative;}
 .stop-detail-num{
-  position:absolute;
-  top:14px; left:14px;
-  width:34px;height:34px;
-  border-radius:50%;
-  background:var(--accent);
-  color:#fff;
-  font-family:'Fraunces',serif;
-  font-weight:700;
-  font-size:15px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  box-shadow:0 4px 10px rgba(0,0,0,0.25);
+  position:absolute;top:14px;left:14px;width:34px;height:34px;
+  border-radius:50%;background:var(--accent);color:#fff;
+  font-family:'Fraunces',serif;font-weight:700;font-size:15px;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 10px rgba(0,0,0,.25);
 }
-
-.stop-detail-body{
-  padding:26px 30px;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-}
-
-.stop-detail-time{
-  font-size:11.5px;
-  font-weight:700;
-  letter-spacing:1.5px;
-  text-transform:uppercase;
-  color:var(--teal);
-  margin-bottom:8px;
-}
-
-.stop-detail-name{
-  font-family:'Fraunces',serif;
-  font-weight:700;
-  font-size:24px;
-  color:var(--ink);
-  margin-bottom:10px;
-}
-
-.stop-detail-desc{
-  font-size:14.5px;
-  color:var(--ink-soft);
-  line-height:1.7;
-  margin-bottom:14px;
-}
-
+.stop-detail-body{padding:26px 30px;display:flex;flex-direction:column;justify-content:center;}
+.stop-detail-time{font-size:11.5px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--teal);margin-bottom:8px;}
+.stop-detail-name{font-family:'Fraunces',serif;font-weight:700;font-size:24px;color:var(--ink);margin-bottom:10px;}
+.stop-detail-desc{font-size:14.5px;color:var(--ink-soft);line-height:1.7;margin-bottom:14px;}
 .ticket-box{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  background:var(--accent-soft);
-  border:1px solid rgba(232,98,63,0.25);
-  border-radius:12px;
-  padding:12px 16px;
-  margin-top:6px;
+  display:flex;align-items:center;gap:12px;
+  background:var(--accent-soft);border:1px solid rgba(232,98,63,.25);
+  border-radius:12px;padding:12px 16px;margin-top:6px;
 }
-.ticket-box.free{background:rgba(79,209,174,0.1); border-color:rgba(79,209,174,0.25);}
-.ticket-box .ico{font-size:18px; flex-shrink:0;}
-.ticket-box .txt{font-size:12.5px; color:var(--ink); line-height:1.5;}
-.ticket-box .txt strong{display:block; font-size:13px; margin-bottom:2px; color:var(--ink);}
-.ticket-box a{color:var(--accent); font-weight:700; text-decoration:none;}
+.ticket-box.free{background:rgba(79,209,174,.1);border-color:rgba(79,209,174,.25);}
+.ticket-box .ico{font-size:18px;flex-shrink:0;}
+.ticket-box .txt{font-size:12.5px;color:var(--ink);line-height:1.5;}
+.ticket-box .txt strong{display:block;font-size:13px;margin-bottom:2px;}
+.ticket-box a{color:var(--accent);font-weight:700;text-decoration:none;}
 .ticket-box.free a{color:var(--teal);}
 .ticket-box a:hover{text-decoration:underline;}
 
-@media (max-width:760px){
+/* DAY NAV */
+.day-nav-footer{display:flex;justify-content:space-between;gap:16px;padding:40px 0 80px;flex-wrap:wrap;}
+.day-nav-btn{
+  flex:1;min-width:220px;
+  background:linear-gradient(160deg,var(--paper-soft),var(--paper));
+  border:1px solid var(--line);border-radius:16px;padding:20px 24px;
+  text-decoration:none;transition:border-color .15s,transform .15s;
+}
+.day-nav-btn:hover{border-color:var(--accent);transform:translateY(-2px);}
+.day-nav-btn .lbl{font-size:11px;text-transform:uppercase;letter-spacing:1.5px;color:var(--ink-soft);margin-bottom:4px;}
+.day-nav-btn .ttl{font-family:'Fraunces',serif;font-weight:700;font-size:18px;color:var(--ink);}
+.day-nav-btn.next{text-align:right;}
+footer.site-footer{text-align:center;padding:40px 24px;color:var(--ink-soft);font-size:12.5px;border-top:1px solid var(--line);}
+
+@media(max-width:760px){
   .stop-detail{grid-template-columns:1fr;}
   .stop-detail-img{min-height:180px;}
+  .topbar{height:auto;padding:10px 16px;}
 }
-
-/* ============ FOOTER NAV (prev/next day) ============ */
-.day-nav-footer{
-  display:flex;
-  justify-content:space-between;
-  gap:16px;
-  padding:40px 0 80px;
-  flex-wrap:wrap;
-}
-.day-nav-btn{
-  flex:1;
-  min-width:220px;
-  background:linear-gradient(160deg, var(--paper-soft), var(--paper));
-  border:1px solid var(--line);
-  border-radius:16px;
-  padding:20px 24px;
-  text-decoration:none;
-  transition:border-color .15s, transform .15s;
-}
-.day-nav-btn:hover{border-color:var(--accent); transform:translateY(-2px);}
-.day-nav-btn .lbl{font-size:11px; text-transform:uppercase; letter-spacing:1.5px; color:var(--ink-soft); margin-bottom:4px;}
-.day-nav-btn .ttl{font-family:'Fraunces',serif; font-weight:700; font-size:18px; color:var(--ink);}
-.day-nav-btn.next{text-align:right;}
-
-footer.site-footer{
-  text-align:center;
-  padding:40px 24px;
-  color:var(--ink-soft);
-  font-size:12.5px;
-  border-top:1px solid var(--line);
-}
-.day-hero{padding:50px 0 10px;position:relative;}
-.day-hero::before{content:'';position:absolute;top:-30px;left:5%;width:500px;height:300px;background:radial-gradient(circle,rgba(232,98,63,0.14),transparent 65%);pointer-events:none;z-index:0;}
-.day-hero .title-lg{font-size:clamp(34px,5vw,52px);position:relative;color:#fff;}
-.day-hero .sub{font-size:14.5px;color:var(--ink-soft);margin-top:10px;max-width:560px;position:relative;}
-.gmap-wrap{border-radius:18px;overflow:hidden;border:1px solid var(--line);box-shadow:0 24px 60px rgba(0,0,0,0.4);}
-.gmap-wrap iframe{display:block;width:100%;height:480px;border:0;}
-.gmap-btn{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:#fff;text-decoration:none;padding:11px 22px;border-radius:30px;font-size:13px;font-weight:600;box-shadow:0 4px 16px rgba(232,98,63,0.35);transition:transform .15s;}
-.gmap-btn:hover{transform:translateY(-2px);}
+@media(max-width:600px){.wrap{padding:0 18px;}}
 </style>
+
 </head>
 <body>
+
 <header class="topbar">
-  <a href="../index.html" class="brand-mark"><span class="star">✦</span> Vacaciones</a>
-  <div class="crumbs"><a href="../index.html">Inicio</a><span class="sep">/</span><a href="index.html">New York</a><span class="sep">/</span><span class="current">Día 1</span></div>
+  <a href="../../index.html" class="brand-mark"><span class="star">✦</span> Vacaciones</a>
+  <div class="crumbs">
+    <a href="../../index.html" data-es="Inicio" data-en="Home">Inicio</a><span class="sep">/</span>
+    <a href="../index.html">New York</a><span class="sep">/</span>
+    <span class="current" data-es="Día 1" data-en="Day 1">Día 1</span>
+  </div>
   <div class="day-pills"><a href="dia1.html" class="active">Día 1</a><a href="dia2.html">Día 2</a><a href="dia3.html">Día 3</a></div>
+  <div class="lang-btn">
+    <button data-l="es" onclick="setLang('es')" class="active">ES</button>
+    <button data-l="en" onclick="setLang('en')">EN</button>
+  </div>
 </header>
 
-<section class="day-hero">
+<section style="padding:50px 0 10px;position:relative;">
+  <div style="position:absolute;top:-30px;left:5%;width:500px;height:300px;background:radial-gradient(circle,rgba(232,98,63,.14),transparent 65%);pointer-events:none;z-index:0;"></div>
   <div class="wrap">
-    <div class="eyebrow">Día 1 · Llegada</div>
-    <h1 class="title-lg">Harlem & Midtown</h1>
-    <p class="sub">De Apollo Theater al corazón de Times Square, pasando por Central Park, Fifth Avenue, Rockefeller Center, Summit y Grand Central.</p>
+    <div class="eyebrow" data-es="Día 1 · Llegada" data-en="Day 1 · Arrival">Día 1 · Llegada</div>
+    <h1 class="title-lg" style="font-size:clamp(34px,5vw,52px);color:#fff;" data-es="Harlem &amp; Midtown" data-en="Harlem &amp; Midtown">Harlem &amp; Midtown</h1>
+    <p style="font-size:14.5px;color:var(--ink-soft);margin-top:10px;max-width:560px;" data-es="De Apollo Theater al corazón de Times Square, pasando por Central Park, Fifth Avenue, Rockefeller y Grand Central." data-en="From Apollo Theater to the heart of Times Square, through Central Park, Fifth Avenue, Rockefeller and Grand Central.">De Apollo Theater al corazón de Times Square, pasando por Central Park, Fifth Avenue, Rockefeller y Grand Central.</p>
   </div>
 </section>
-
-<section class="map-section">
-  <div class="wrap">
-    <div class="map-card">
-      <div class="gmap-wrap">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m44!1m12!1m3!1d24212.0!2d-73.9700!3d40.7750!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m29!3e2!4m5!1s0x89c2f66d3282a545%3A0x1ccd9839e39cdc2d!2sApollo+Theater%2C+253+W+125th+St%2C+New+York!3m2!1d40.8099152!2d-73.9501452!4m5!1s0x89c2589a018531e3%3A0xb9df1f7387a94119!2sCentral+Park%2C+New+York!3m2!1d40.7825547!2d-73.9655834!4m5!1s0x89c258fecf664df5%3A0x33d224a0d5dacca2!2sRockefeller+Center%2C+45+Rockefeller+Plaza%2C+New+York!3m2!1d40.7587402!2d-73.9786736!4m5!1s0x89c259ee2035b277%3A0x5e86025852d8fe6e!2sSUMMIT+One+Vanderbilt%2C+45+E+42nd+St%2C+New+York!3m2!1d40.7527746!2d-73.9787253!4m5!1s0x89c25855c6480299%3A0x55194ec5a1ae072e!2sTimes+Square%2C+Manhattan!3m2!1d40.7579747!2d-73.9855426!5e0!3m2!1ses!2sus!4v1700000001" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-      </div>
-      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-top:16px;">
-        <div class="map-route-list" style="margin-top:0;">
-          <a href="#s1" class="route-chip"><span class="route-num">1</span> Apollo Theater</a>
-          <a href="#s2" class="route-chip"><span class="route-num">2</span> Central Park</a>
-          <a href="#s3" class="route-chip"><span class="route-num">3</span> Fifth Avenue</a>
-          <a href="#s4" class="route-chip"><span class="route-num">4</span> Rockefeller Center</a>
-          <a href="#s5" class="route-chip"><span class="route-num">5</span> Summit</a>
-          <a href="#s6" class="route-chip"><span class="route-num">6</span> Grand Central</a>
-          <a href="#s7" class="route-chip"><span class="route-num">7</span> Times Square</a>
-        </div>
-        <a class="gmap-btn" href="https://www.google.com/maps/dir/Apollo+Theater,+253+W+125th+St,+New+York/Central+Park,+New+York/5th+Ave,+New+York/Rockefeller+Center,+45+Rockefeller+Plaza/SUMMIT+One+Vanderbilt,+45+E+42nd+St/Grand+Central+Terminal/Times+Square,+Manhattan" target="_blank">🗺️ Abrir en Google Maps</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="stops-section">
-  <div class="wrap">
-    <div class="stop-detail" id="s1">
-      <div class="stop-detail-img" style="background-image:url('https://images.unsplash.com/photo-1568515045052-f9a854d70bfd?w=500&q=80')"><div class="stop-detail-num">1</div></div>
-      <div class="stop-detail-body">
-        <div class="stop-detail-time">Mañana · Harlem</div>
-        <div class="stop-detail-name">Apollo Theater</div>
-        <p class="stop-detail-desc">Teatro histórico de Harlem donde debutaron leyendas como Ella Fitzgerald y James Brown.</p>
-        <div class="ticket-box"><div class="ico">🎟️</div><div class="txt"><strong>Tour interno opcional</strong>Fachada gratis. Tours guiados disponibles. <a href="https://www.apollotheater.org" target="_blank">apollotheater.org →</a></div></div>
-      </div>
-    </div>
-    <div class="stop-detail" id="s2">
-      <div class="stop-detail-img" style="background-image:url('https://images.unsplash.com/photo-1534430480872-3498386e7856?w=500&q=80')"><div class="stop-detail-num">2</div></div>
-      <div class="stop-detail-body">
-        <div class="stop-detail-time">10:30 AM</div>
-        <div class="stop-detail-name">Central Park</div>
-        <p class="stop-detail-desc">Bethesda Fountain, el lago y Bow Bridge son paradas obligatorias caminando desde el norte.</p>
-        <div class="ticket-box free"><div class="ico">✅</div><div class="txt"><strong>Entrada gratuita</strong>Parque público, sin costo de acceso.</div></div>
-      </div>
-    </div>
-    <div class="stop-detail" id="s3">
-      <div class="stop-detail-img" style="background-image:url('https://images.unsplash.com/photo-1499092346589-b9b6be3e94b2?w=500&q=80')"><div class="stop-detail-num">3</div></div>
-      <div class="stop-detail-body">
-        <div class="stop-detail-time">12:00 PM</div>
-        <div class="stop-detail-name">Fifth Avenue</div>
-        <p class="stop-detail-desc">La avenida más famosa del mundo. St. Patrick's Cathedral, tiendas de lujo y fachadas icónicas.</p>
-        <div class="ticket-box free"><div class="ico">✅</div><div class="txt"><strong>Acceso libre</strong>Calle pública — solo caminar y disfrutar.</div></div>
-      </div>
-    </div>
-    <div class="stop-detail" id="s4">
-      <div class="stop-detail-img" style="background-image:url('https://images.unsplash.com/photo-1522083165195-3424ed129620?w=500&q=80')"><div class="stop-detail-num">4</div></div>
-      <div class="stop-detail-body">
-        <div class="stop-detail-time">12:45 PM · Almuerzo</div>
-        <div class="stop-detail-name">Rockefeller Center</div>
-        <p class="stop-detail-desc">Arquitectura art déco y la Plaza Central. Almuerza aquí antes de subir al Summit.</p>
-        <div class="ticket-box free"><div class="ico">✅</div><div class="txt"><strong>Plaza gratuita</strong>Acceso libre a la plaza exterior.</div></div>
-      </div>
-    </div>
-    <div class="stop-detail" id="s5">
-      <div class="stop-detail-img" style="background-image:url('https://images.unsplash.com/photo-1582982068-3405f28b4c4b?w=500&q=80')"><div class="stop-detail-num">5</div></div>
-      <div class="stop-detail-body">
-        <div class="stop-detail-time">2:00 PM</div>
-        <div class="stop-detail-name">Summit One Vanderbilt</div>
-        <p class="stop-detail-desc">Piso de vidrio a 427m de altura. Mejor al atardecer para ver Manhattan iluminarse.</p>
-        <div class="ticket-box"><div class="ico">🎟️</div><div class="txt"><strong>Ticket obligatorio</strong><a href="https://summitov.com" target="_blank">summitov.com →</a></div></div>
-      </div>
-    </div>
-    <div class="stop-detail" id="s6">
-      <div class="stop-detail-img" style="background-image:url('https://images.unsplash.com/photo-1568702846914-96b305d2aaeb?w=500&q=80')"><div class="stop-detail-num">6</div></div>
-      <div class="stop-detail-body">
-        <div class="stop-detail-time">4:30 PM</div>
-        <div class="stop-detail-name">Grand Central Terminal</div>
-        <p class="stop-detail-desc">Una de las estaciones más bellas del mundo. El techo con constelaciones es impresionante.</p>
-        <div class="ticket-box free"><div class="ico">✅</div><div class="txt"><strong>Entrada gratuita</strong>Estación pública, acceso sin costo.</div></div>
-      </div>
-    </div>
-    <div class="stop-detail" id="s7">
-      <div class="stop-detail-img" style="background-image:url('https://images.unsplash.com/photo-1535827841776-24afc1e255ac?w=500&q=80')"><div class="stop-detail-num">7</div></div>
-      <div class="stop-detail-body">
-        <div class="stop-detail-time">7:00 PM · Noche</div>
-        <div class="stop-detail-name">Times Square</div>
-        <p class="stop-detail-desc">Cierra el día con las pantallas gigantes y la energía nocturna de NYC.</p>
-        <div class="ticket-box free"><div class="ico">✅</div><div class="txt"><strong>Entrada gratuita</strong>Plaza pública, abierta 24/7.</div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="wrap">
-  <div class="day-nav-footer">
-    <a href="index.html" class="day-nav-btn"><div class="lbl">← Volver a</div><div class="ttl">New York</div></a>
-    <a href="dia2.html" class="day-nav-btn next"><div class="lbl">Siguiente →</div><div class="ttl">Día 2 — Brooklyn & Downtown</div></a>
+<section class="map-section"><div class="wrap">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<style>
+#map_d1{height:480px;border-radius:14px;}
+.pin-label{
+  background:var(--accent);color:#fff;border:2px solid #fff;
+  border-radius:50%;width:28px;height:28px;
+  display:flex;align-items:center;justify-content:center;
+  font-weight:700;font-size:13px;font-family:Fraunces,serif;
+  box-shadow:0 3px 10px rgba(232,98,63,.5);
+}
+</style>
+<div class="map-card">
+  <div id="map_d1"></div>
+  <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-top:16px;">
+    <div class="map-route-list" style="margin-top:0;"><a href="#s1" class="route-chip"><span class="route-num">1</span> Apollo Theater</a><a href="#s2" class="route-chip"><span class="route-num">2</span> Central Park</a><a href="#s3" class="route-chip"><span class="route-num">3</span> Fifth Avenue</a><a href="#s4" class="route-chip"><span class="route-num">4</span> Rockefeller Center</a><a href="#s5" class="route-chip"><span class="route-num">5</span> Summit One Vanderbilt</a><a href="#s6" class="route-chip"><span class="route-num">6</span> Grand Central Terminal</a><a href="#s7" class="route-chip"><span class="route-num">7</span> Times Square</a></div>
+    <a class="gmap-btn" href="https://www.google.com/maps/dir/Apollo+Theater,+253+W+125th+St,+New+York/Central+Park/5th+Ave,+New+York/Rockefeller+Center/SUMMIT+One+Vanderbilt/Grand+Central+Terminal/Times+Square" target="_blank">🗺️ <span data-es="Abrir en Google Maps" data-en="Open in Google Maps">Abrir en Google Maps</span></a>
   </div>
 </div>
-<footer class="site-footer">New York · Día 1 de 3</footer>
+<script>
+function pinIcon(n){
+  return L.divIcon({
+    className:'',
+    html:'<div class="pin-label">'+n+'</div>',
+    iconSize:[28,28],iconAnchor:[14,14]
+  });
+}
+var map_d1 = L.map('map_d1').setView([40.776,-73.968],13);
+L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',{
+  attribution:'&copy; OpenStreetMap &copy; CARTO',maxZoom:19
+}).addTo(map_d1);
+
+    L.marker([40.8099, -73.9501], {icon: pinIcon('1')})
+      .addTo(map_d1)
+      .bindPopup('<b>1. Apollo Theater</b>');
+
+    L.marker([40.7826, -73.9656], {icon: pinIcon('2')})
+      .addTo(map_d1)
+      .bindPopup('<b>2. Central Park</b>');
+
+    L.marker([40.7745, -73.9655], {icon: pinIcon('3')})
+      .addTo(map_d1)
+      .bindPopup('<b>3. Fifth Avenue</b>');
+
+    L.marker([40.7587, -73.9787], {icon: pinIcon('4')})
+      .addTo(map_d1)
+      .bindPopup('<b>4. Rockefeller Center</b>');
+
+    L.marker([40.7528, -73.9788], {icon: pinIcon('5')})
+      .addTo(map_d1)
+      .bindPopup('<b>5. Summit One Vanderbilt</b>');
+
+    L.marker([40.7527, -73.9772], {icon: pinIcon('6')})
+      .addTo(map_d1)
+      .bindPopup('<b>6. Grand Central Terminal</b>');
+
+    L.marker([40.758, -73.9855], {icon: pinIcon('7')})
+      .addTo(map_d1)
+      .bindPopup('<b>7. Times Square</b>');
+
+</script></div></section>
+<section class="stops-section"><div class="wrap">
+
+    <div class="stop-detail" id="s1">
+      <div class="stop-detail-img" style="background-image:url('https://images.unsplash.com/photo-1568515045052-f9a854d70bfd?w=600&q=85')"><div class="stop-detail-num">1</div></div>
+      <div class="stop-detail-body">
+        <div class="stop-detail-time" data-es="Mañana · Harlem" data-en="Morning · Harlem">Mañana · Harlem</div>
+        <div class="stop-detail-name" data-es="Apollo Theater" data-en="Apollo Theater">Apollo Theater</div>
+        <p class="stop-detail-desc" data-es="Teatro histórico de Harlem donde debutaron leyendas como Ella Fitzgerald y James Brown." data-en="Historic Harlem theater where legends like Ella Fitzgerald and James Brown debuted.">Teatro histórico de Harlem donde debutaron leyendas como Ella Fitzgerald y James Brown.</p>
+        
+        <div class="ticket-box">
+          <div class="ico">🎟️</div>
+          <div class="txt">
+            <strong data-es="Tour interno opcional" data-en="Optional guided tour">Tour interno opcional</strong>
+             <a href="https://www.apollotheater.org" target="_blank">www.apollotheater.org →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="stop-detail" id="s2">
+      <div class="stop-detail-img" style="background-image:url('https://images.unsplash.com/photo-1568515387631-8b650bbcdb90?w=600&q=85')"><div class="stop-detail-num">2</div></div>
+      <div class="stop-detail-body">
+        <div class="stop-detail-time" data-es="10:30 AM" data-en="10:30 AM">10:30 AM</div>
+        <div class="stop-detail-name" data-es="Central Park" data-en="Central Park">Central Park</div>
+        <p class="stop-detail-desc" data-es="Bethesda Fountain, el lago y Bow Bridge son paradas obligatorias caminando desde el norte." data-en="Bethesda Fountain, the lake and Bow Bridge are must-sees walking from the north.">Bethesda Fountain, el lago y Bow Bridge son paradas obligatorias caminando desde el norte.</p>
+        
+        <div class="ticket-box free">
+          <div class="ico">✅</div>
+          <div class="txt">
+            <strong data-es="Entrada gratuita" data-en="Free entry">Entrada gratuita</strong>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="stop-detail" id="s3">
+      <div class="stop-detail-img" style="background-image:url('https://images.unsplash.com/photo-1499092346589-b9b6be3e94b2?w=600&q=85')"><div class="stop-detail-num">3</div></div>
+      <div class="stop-detail-body">
+        <div class="stop-detail-time" data-es="12:00 PM" data-en="12:00 PM">12:00 PM</div>
+        <div class="stop-detail-name" data-es="Fifth Avenue" data-en="Fifth Avenue">Fifth Avenue</div>
+        <p class="stop-detail-desc" data-es="La avenida más famosa del mundo. St. Patrick's Cathedral, tiendas de lujo y fachadas icónicas." data-en="The world's most famous avenue. St. Patrick's Cathedral, luxury stores and iconic facades.">La avenida más famosa del mundo. St. Patrick's Cathedral, tiendas de lujo y fachadas icónicas.</p>
+        
+        <div class="ticket-box free">
+          <div class="ico">✅</div>
+          <div class="txt">
+            <strong data-es="Acceso libre" data-en="Free access">Acceso libre</strong>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="stop-detail" id="s4">
+      <div class="stop-detail-img" style="background-image:url('https://images.unsplash.com/photo-1522083165195-3424ed129620?w=600&q=85')"><div class="stop-detail-num">4</div></div>
+      <div class="stop-detail-body">
+        <div class="stop-detail-time" data-es="12:45 PM · Almuerzo" data-en="12:45 PM · Lunch">12:45 PM · Almuerzo</div>
+        <div class="stop-detail-name" data-es="Rockefeller Center" data-en="Rockefeller Center">Rockefeller Center</div>
+        <p class="stop-detail-desc" data-es="Arquitectura art déco y la Plaza Central. Almuerza aquí antes de subir al Summit." data-en="Art deco architecture and the Central Plaza. Have lunch here before heading to the Summit.">Arquitectura art déco y la Plaza Central. Almuerza aquí antes de subir al Summit.</p>
+        
+        <div class="ticket-box free">
+          <div class="ico">✅</div>
+          <div class="txt">
+            <strong data-es="Plaza gratuita" data-en="Free plaza">Plaza gratuita</strong>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="stop-detail" id="s5">
+      <div class="stop-detail-img" style="background-image:url('https://images.unsplash.com/photo-1582982068-3405f28b4c4b?w=600&q=85')"><div class="stop-detail-num">5</div></div>
+      <div class="stop-detail-body">
+        <div class="stop-detail-time" data-es="2:00 PM" data-en="2:00 PM">2:00 PM</div>
+        <div class="stop-detail-name" data-es="Summit One Vanderbilt" data-en="Summit One Vanderbilt">Summit One Vanderbilt</div>
+        <p class="stop-detail-desc" data-es="Piso de vidrio a 427m de altura. Mejor al atardecer para ver Manhattan iluminarse." data-en="Glass floor at 427m. Best at sunset to watch Manhattan light up.">Piso de vidrio a 427m de altura. Mejor al atardecer para ver Manhattan iluminarse.</p>
+        
+        <div class="ticket-box">
+          <div class="ico">🎟️</div>
+          <div class="txt">
+            <strong data-es="Ticket obligatorio" data-en="Ticket required">Ticket obligatorio</strong>
+             <a href="https://summitov.com" target="_blank">summitov.com →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="stop-detail" id="s6">
+      <div class="stop-detail-img" style="background-image:url('https://images.unsplash.com/photo-1568702846914-96b305d2aaeb?w=600&q=85')"><div class="stop-detail-num">6</div></div>
+      <div class="stop-detail-body">
+        <div class="stop-detail-time" data-es="4:30 PM" data-en="4:30 PM">4:30 PM</div>
+        <div class="stop-detail-name" data-es="Grand Central Terminal" data-en="Grand Central Terminal">Grand Central Terminal</div>
+        <p class="stop-detail-desc" data-es="Una de las estaciones más bellas del mundo. El techo con constelaciones es impresionante." data-en="One of the most beautiful stations in the world. The constellation ceiling is stunning.">Una de las estaciones más bellas del mundo. El techo con constelaciones es impresionante.</p>
+        
+        <div class="ticket-box free">
+          <div class="ico">✅</div>
+          <div class="txt">
+            <strong data-es="Entrada gratuita" data-en="Free entry">Entrada gratuita</strong>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="stop-detail" id="s7">
+      <div class="stop-detail-img" style="background-image:url('https://images.unsplash.com/photo-1535827841776-24afc1e255ac?w=600&q=85')"><div class="stop-detail-num">7</div></div>
+      <div class="stop-detail-body">
+        <div class="stop-detail-time" data-es="7:00 PM · Noche" data-en="7:00 PM · Night">7:00 PM · Noche</div>
+        <div class="stop-detail-name" data-es="Times Square" data-en="Times Square">Times Square</div>
+        <p class="stop-detail-desc" data-es="Cierra el día con las pantallas gigantes y la energía nocturna de NYC." data-en="End the day with giant screens and NYC's nighttime energy.">Cierra el día con las pantallas gigantes y la energía nocturna de NYC.</p>
+        
+        <div class="ticket-box free">
+          <div class="ico">✅</div>
+          <div class="txt">
+            <strong data-es="Entrada gratuita" data-en="Free entry">Entrada gratuita</strong>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+</div></section>
+<div class="wrap"><div class="day-nav-footer">
+  <a href="../index.html" class="day-nav-btn"><div class="lbl" data-es="← Volver a" data-en="← Back to">← Volver a</div><div class="ttl">New York</div></a>
+  <a href="dia2.html" class="day-nav-btn next"><div class="lbl" data-es="Siguiente →" data-en="Next →">Siguiente →</div><div class="ttl" data-es="Día 2 — Brooklyn" data-en="Day 2 — Brooklyn">Día 2 — Brooklyn</div></a>
+</div></div>
+<footer class="site-footer" data-es="New York · Día 1 de 3" data-en="New York · Day 1 of 3">New York · Día 1 de 3</footer>
+
+<script>
+function setLang(l){
+  document.querySelectorAll('[data-es]').forEach(el=>{
+    el.textContent = l==='es' ? el.dataset.es : el.dataset.en;
+  });
+  document.querySelectorAll('.lang-btn button').forEach(b=>{
+    b.classList.toggle('active', b.dataset.l===l);
+  });
+  localStorage.setItem('lang',l);
+}
+document.addEventListener('DOMContentLoaded',()=>{
+  setLang(localStorage.getItem('lang')||'es');
+});
+</script>
+
 </body>
 </html>
