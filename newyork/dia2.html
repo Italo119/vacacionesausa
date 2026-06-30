@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Día 2 — Brooklyn & Downtown</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700;9..144,900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700;9..144,900&family=Inter:wght@400;500;600;700&display=swap');
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+
+:root{
+  --bg:#0f1115;
+  --bg-soft:#161922;
+  --paper:#1b1f2a;
+  --paper-soft:#20242f;
+  --ink:#f3f1ec;
+  --ink-soft:#a8a4ba;
+  --line:#2c3040;
+  --accent:#e8623f;
+  --accent-soft:rgba(232,98,63,0.14);
+  --teal:#4fd1ae;
+  --gold:#f0b94d;
+  --violet:#8b7fd6;
+  --radius:18px;
+}
+
+html{scroll-behavior:smooth;}
+body{
+  background:
+    radial-gradient(circle at 12% 8%, rgba(139,127,214,0.16), transparent 42%),
+    radial-gradient(circle at 88% 18%, rgba(232,98,63,0.14), transparent 45%),
+    radial-gradient(circle at 50% 95%, rgba(79,209,174,0.10), transparent 50%),
+    var(--bg);
+  background-attachment:fixed;
+  color:var(--ink);
+  font-family:'Inter',sans-serif;
+  line-height:1.5;
+}
+
+a{color:inherit;}
+
+/* ============ TOP NAV (breadcrumb style) ============ */
+.topbar{
+  position:sticky;
+  top:0;
+  z-index:200;
+  background:rgba(15,17,21,0.78);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line);
+  padding:0 32px;
+  height:60px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.crumbs{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-size:13px;
+  font-weight:500;
+  color:var(--ink-soft);
+}
+
+.crumbs a{text-decoration:none; transition:color .15s;}
+.crumbs a:hover{color:var(--accent);}
+.crumbs .sep{color:var(--line); font-size:11px;}
+.crumbs .current{color:var(--ink); font-weight:700;}
+
+.brand-mark{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-family:'Fraunces',serif;
+  font-weight:700;
+  font-size:15px;
+  text-decoration:none;
+  color:var(--ink);
+}
+.brand-mark .star{color:var(--accent);}
+
+.day-pills{
+  display:flex;
+  gap:6px;
+}
+.day-pills a{
+  text-decoration:none;
+  font-size:12.5px;
+  font-weight:600;
+  padding:7px 14px;
+  border-radius:20px;
+  color:var(--ink-soft);
+  border:1px solid var(--line);
+  transition:all .15s;
+  white-space:nowrap;
+}
+.day-pills a:hover{border-color:var(--accent); color:var(--accent);}
+.day-pills a.active{background:linear-gradient(135deg, var(--accent), #c8492f); color:#fff; border-color:transparent; box-shadow:0 4px 14px rgba(232,98,63,0.35);}
+
+@media (max-width:760px){
+  .topbar{padding:0 16px; flex-wrap:wrap; height:auto; padding-top:10px; padding-bottom:10px; gap:8px;}
+  .day-pills{overflow-x:auto;}
+}
+
+/* ============ SECTIONS GENERIC ============ */
+.wrap{max-width:1100px; margin:0 auto; padding:0 32px;}
+@media (max-width:600px){.wrap{padding:0 18px;}}
+
+.eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  font-size:11.5px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:var(--accent);
+  font-weight:700;
+  margin-bottom:18px;
+}
+.eyebrow::before{content:''; width:24px; height:1px; background:var(--accent);}
+
+.title-xl{
+  font-family:'Fraunces',serif;
+  font-weight:900;
+  letter-spacing:-2px;
+  line-height:0.95;
+  color:var(--ink);
+}
+
+.title-lg{
+  font-family:'Fraunces',serif;
+  font-weight:700;
+  letter-spacing:-1px;
+  line-height:1.05;
+  color:var(--ink);
+}
+
+/* ============ MAP CARD ============ */
+.map-section{
+  padding:50px 0 70px;
+}
+.map-card{
+  background:linear-gradient(160deg, var(--paper-soft), var(--paper));
+  border:1px solid var(--line);
+  border-radius:24px;
+  padding:20px;
+  box-shadow:0 24px 60px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.03);
+}
+.map-card svg{display:block; width:100%; height:auto; border-radius:14px;}
+
+.map-route-list{
+  margin-top:20px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+}
+.route-chip{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  background:var(--paper-soft);
+  border:1px solid var(--line);
+  border-radius:30px;
+  padding:6px 14px 6px 6px;
+  font-size:12.5px;
+  font-weight:600;
+  color:var(--ink-soft);
+  text-decoration:none;
+  transition:border-color .15s, color .15s, transform .15s;
+}
+.route-chip:hover{border-color:var(--accent); color:var(--ink); transform:translateY(-1px);}
+.route-num{
+  width:22px;height:22px;
+  border-radius:50%;
+  background:var(--accent);
+  color:#fff;
+  font-size:11px;
+  font-weight:700;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-shrink:0;
+}
+
+/* ============ STOP DETAIL CARDS ============ */
+.stops-section{padding:20px 0 80px;}
+
+.stop-detail{
+  display:grid;
+  grid-template-columns:280px 1fr;
+  gap:0;
+  background:linear-gradient(160deg, var(--paper-soft), var(--paper));
+  border:1px solid var(--line);
+  border-radius:20px;
+  overflow:hidden;
+  margin-bottom:20px;
+  transition:border-color .2s, box-shadow .2s;
+}
+.stop-detail:hover{border-color:rgba(232,98,63,0.35); box-shadow:0 20px 50px rgba(0,0,0,0.3);}
+
+.stop-detail-img{
+  background-size:cover;
+  background-position:center;
+  min-height:220px;
+  position:relative;
+}
+
+.stop-detail-num{
+  position:absolute;
+  top:14px; left:14px;
+  width:34px;height:34px;
+  border-radius:50%;
+  background:var(--accent);
+  color:#fff;
+  font-family:'Fraunces',serif;
+  font-weight:700;
+  font-size:15px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 4px 10px rgba(0,0,0,0.25);
+}
+
+.stop-detail-body{
+  padding:26px 30px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+
+.stop-detail-time{
+  font-size:11.5px;
+  font-weight:700;
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+  color:var(--teal);
+  margin-bottom:8px;
+}
+
+.stop-detail-name{
+  font-family:'Fraunces',serif;
+  font-weight:700;
+  font-size:24px;
+  color:var(--ink);
+  margin-bottom:10px;
+}
+
+.stop-detail-desc{
+  font-size:14.5px;
+  color:var(--ink-soft);
+  line-height:1.7;
+  margin-bottom:14px;
+}
+
+.ticket-box{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  background:var(--accent-soft);
+  border:1px solid rgba(232,98,63,0.25);
+  border-radius:12px;
+  padding:12px 16px;
+  margin-top:6px;
+}
+.ticket-box.free{background:rgba(79,209,174,0.1); border-color:rgba(79,209,174,0.25);}
+.ticket-box .ico{font-size:18px; flex-shrink:0;}
+.ticket-box .txt{font-size:12.5px; color:var(--ink); line-height:1.5;}
+.ticket-box .txt strong{display:block; font-size:13px; margin-bottom:2px; color:var(--ink);}
+.ticket-box a{color:var(--accent); font-weight:700; text-decoration:none;}
+.ticket-box.free a{color:var(--teal);}
+.ticket-box a:hover{text-decoration:underline;}
+
+@media (max-width:760px){
+  .stop-detail{grid-template-columns:1fr;}
+  .stop-detail-img{min-height:180px;}
+}
+
+/* ============ FOOTER NAV (prev/next day) ============ */
+.day-nav-footer{
+  display:flex;
+  justify-content:space-between;
+  gap:16px;
+  padding:40px 0 80px;
+  flex-wrap:wrap;
+}
+.day-nav-btn{
+  flex:1;
+  min-width:220px;
+  background:linear-gradient(160deg, var(--paper-soft), var(--paper));
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:20px 24px;
+  text-decoration:none;
+  transition:border-color .15s, transform .15s;
+}
+.day-nav-btn:hover{border-color:var(--accent); transform:translateY(-2px);}
+.day-nav-btn .lbl{font-size:11px; text-transform:uppercase; letter-spacing:1.5px; color:var(--ink-soft); margin-bottom:4px;}
+.day-nav-btn .ttl{font-family:'Fraunces',serif; font-weight:700; font-size:18px; color:var(--ink);}
+.day-nav-btn.next{text-align:right;}
+
+footer.site-footer{
+  text-align:center;
+  padding:40px 24px;
+  color:var(--ink-soft);
+  font-size:12.5px;
+  border-top:1px solid var(--line);
+}
+.day-hero{padding:50px 0 10px;position:relative;}
+.day-hero::before{content:'';position:absolute;top:-30px;left:5%;width:500px;height:300px;background:radial-gradient(circle,rgba(232,98,63,0.14),transparent 65%);pointer-events:none;z-index:0;}
+.day-hero .title-lg{font-size:clamp(34px,5vw,52px);position:relative;color:#fff;}
+.day-hero .sub{font-size:14.5px;color:var(--ink-soft);margin-top:10px;max-width:560px;position:relative;}
+.gmap-wrap{border-radius:18px;overflow:hidden;border:1px solid var(--line);box-shadow:0 24px 60px rgba(0,0,0,0.4);}
+.gmap-wrap iframe{display:block;width:100%;height:480px;border:0;}
+.gmap-btn{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:#fff;text-decoration:none;padding:11px 22px;border-radius:30px;font-size:13px;font-weight:600;box-shadow:0 4px 16px rgba(232,98,63,0.35);transition:transform .15s;}
+.gmap-btn:hover{transform:translateY(-2px);}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <a href="../index.html" class="brand-mark"><span class="star">✦</span> Vacaciones</a>
+  <div class="crumbs"><a href="../index.html">Inicio</a><span class="sep">/</span><a href="index.html">New York</a><span class="sep">/</span><span class="current">Día 2</span></div>
+  <div class="day-pills"><a href="dia1.html">Día 1</a><a href="dia2.html" class="active">Día 2</a><a href="dia3.html">Día 3</a></div>
+</header>
+
+<section class="day-hero">
+  <div class="wrap">
+    <div class="eyebrow">Día 2 · Historia y vistas épicas</div>
+    <h1 class="title-lg">Brooklyn & Downtown</h1>
+    <p class="sub">Cruzas el puente de Brooklyn, navegas hasta la Estatua de la Libertad y terminas en el distrito financiero con el 9/11 Memorial.</p>
+  </div>
+</section>
+
+<section class="map-section">
+  <div class="wrap">
+    <div class="map-card">
+      <div class="gmap-wrap">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m44!1m12!1m3!1d12153.0!2d-74.0050!3d40.7060!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m29!3e2!4m5!1s0x89c25a2343ce7b2b%3A0x2526ddba7abd465c!2sBrooklyn+Bridge%2C+New+York!3m2!1d40.7061!2d-73.9969!4m5!1s0x89c25a316f3eb0fb%3A0xceb1d92c1cafc9c3!2sDUMBO%2C+Brooklyn%2C+New+York!3m2!1d40.7033!2d-73.9881!4m5!1s0x89c25090129c363d%3A0x40c6a5770d25022b!2sStatue+of+Liberty%2C+New+York!3m2!1d40.6892!2d-74.0445!4m5!1s0x89c2589a17a81551%3A0xc7db393ae1eff521!2sCharging+Bull%2C+Bowling+Green%2C+New+York!3m2!1d40.7056!2d-74.0134!4m5!1s0x89c25a1a3be8cb45%3A0xf430ccc5401d1eed!2s9%2F11+Memorial%2C+180+Greenwich+St%2C+New+York!3m2!1d40.7116!2d-74.0133!5e0!3m2!1ses!2sus!4v1700000002" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-top:16px;">
+        <div class="map-route-list" style="margin-top:0;">
+          <a href="#s1" class="route-chip"><span class="route-num">1</span> Brooklyn Bridge</a>
+          <a href="#s2" class="route-chip"><span class="route-num">2</span> Dumbo</a>
+          <a href="#s3" class="route-chip"><span class="route-num">3</span> Statue of Liberty</a>
+          <a href="#s4" class="route-chip"><span class="route-num">4</span> Wall Street</a>
+          <a href="#s5" class="route-chip"><span class="route-num">5</span> Bolsa de NY</a>
+          <a href="#s6" class="route-chip"><span class="route-num">6</span> Charging Bull</a>
+          <a href="#s7" class="route-chip"><span class="route-num">7</span> 9/11 Memorial</a>
+        </div>
+        <a class="gmap-btn" href="https://www.google.com/maps/dir/Brooklyn+Bridge/DUMBO+Brooklyn/Statue+of+Liberty/Wall+Street+New+York/NYSE+11+Wall+St/Charging+Bull+Bowling+Green/9-11+Memorial+180+Greenwich+St+New+York" target="_blank">🗺️ Abrir en Google Maps</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="stops-section">
+  <div class="wrap">
+    <div class="stop-detail" id="s1">
+      <div class="stop-detail-img" style="background-image:url('https://images.unsplash.com/photo-1543716091-a840c05249ec?w=500&q=80')"><div class="stop-detail-num">1</div></div>
+      <div class="stop-detail-body">
+        <div class="stop-detail-time">9:00 AM</div>
+        <div class="stop-detail-name">Brooklyn Bridge</div>
+        <p class="stop-detail-desc">Cruza el puente caminando desde Manhattan — 30 minutos con vistas épicas al skyline y al East River.</p>
+        <div class="ticket-box free"><div class="ico">✅</div><div class="txt"><strong>Entrada gratuita</strong>Puente peatonal público.</div></div>
+      </div>
+    </div>
+    <div class="stop-detail" id="s2">
+      <div class="stop-detail-img" style="background-image:url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&q=80')"><div class="stop-detail-num">2</div></div>
+      <div class="stop-detail-body">
+        <div class="stop-detail-time">10:00 AM</div>
+        <div class="stop-detail-name">Dumbo</div>
+        <p class="stop-detail-desc">El barrio más fotogénico de Brooklyn. Foto clásica: Washington St con Water St.</p>
+        <div class="ticket-box free"><div class="ico">✅</div><div class="txt"><strong>Acceso libre</strong>Barrio público.</div></div>
+      </div>
+    </div>
+    <div class="stop-detail" id="s3">
+      <div class="stop-detail-img" style="background-image:url('https://images.unsplash.com/photo-1605130284535-11dd9eedc58a?w=500&q=80')"><div class="stop-detail-num">3</div></div>
+      <div class="stop-detail-body">
+        <div class="stop-detail-time">12:00 PM</div>
+        <div class="stop-detail-name">Statue of Liberty</div>
+        <p class="stop-detail-desc">Ferry desde Battery Park hacia Liberty Island. Reserva con semanas de anticipación.</p>
+        <div class="ticket-box"><div class="ico">🎟️</div><div class="txt"><strong>Ticket obligatorio</strong><a href="https://www.nps.gov/stli/index.htm" target="_blank">nps.gov/stli →</a></div></div>
+      </div>
+    </div>
+    <div class="stop-detail" id="s4">
+      <div class="stop-detail-img" style="background-image:url('https://images.unsplash.com/photo-1486325212027-8081e485255e?w=500&q=80')"><div class="stop-detail-num">4</div></div>
+      <div class="stop-detail-body">
+        <div class="stop-detail-time">3:00 PM</div>
+        <div class="stop-detail-name">Wall Street</div>
+        <p class="stop-detail-desc">El corazón financiero del mundo. Rascacielos centenarios en el distrito más histórico de Manhattan.</p>
+        <div class="ticket-box free"><div class="ico">✅</div><div class="txt"><strong>Acceso libre</strong>Calle pública.</div></div>
+      </div>
+    </div>
+    <div class="stop-detail" id="s5">
+      <div class="stop-detail-img" style="background-image:url('https://images.unsplash.com/photo-1499092346589-b9b6be3e94b2?w=500&q=80')"><div class="stop-detail-num">5</div></div>
+      <div class="stop-detail-body">
+        <div class="stop-detail-time">3:20 PM</div>
+        <div class="stop-detail-name">Bolsa de Nueva York (NYSE)</div>
+        <p class="stop-detail-desc">La fachada neoclásica del New York Stock Exchange, una de las más reconocibles del mundo.</p>
+        <div class="ticket-box free"><div class="ico">✅</div><div class="txt"><strong>Solo fachada exterior</strong>Interior no accesible al público.</div></div>
+      </div>
+    </div>
+    <div class="stop-detail" id="s6">
+      <div class="stop-detail-img" style="background-image:url('https://images.unsplash.com/photo-1559717865-a99cac1c95d8?w=500&q=80')"><div class="stop-detail-num">6</div></div>
+      <div class="stop-detail-body">
+        <div class="stop-detail-time">3:45 PM</div>
+        <div class="stop-detail-name">Charging Bull</div>
+        <p class="stop-detail-desc">El famoso toro de bronce en Bowling Green. Suele haber fila para la foto.</p>
+        <div class="ticket-box free"><div class="ico">✅</div><div class="txt"><strong>Entrada gratuita</strong>Escultura pública al aire libre.</div></div>
+      </div>
+    </div>
+    <div class="stop-detail" id="s7">
+      <div class="stop-detail-img" style="background-image:url('https://images.unsplash.com/photo-1587474260584-136574528ed5?w=500&q=80')"><div class="stop-detail-num">7</div></div>
+      <div class="stop-detail-body">
+        <div class="stop-detail-time">4:30 PM</div>
+        <div class="stop-detail-name">9/11 Memorial & Museum</div>
+        <p class="stop-detail-desc">Las piscinas reflectantes sobre las huellas de las Torres Gemelas. Una de las experiencias más emotivas de NYC.</p>
+        <div class="ticket-box"><div class="ico">🎟️</div><div class="txt"><strong>Museo requiere ticket</strong>El memorial exterior es gratis. <a href="https://www.911memorial.org" target="_blank">911memorial.org →</a></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <div class="day-nav-footer">
+    <a href="dia1.html" class="day-nav-btn"><div class="lbl">← Anterior</div><div class="ttl">Día 1 — Harlem & Midtown</div></a>
+    <a href="dia3.html" class="day-nav-btn next"><div class="lbl">Siguiente →</div><div class="ttl">Día 3 — West Side & Downtown</div></a>
+  </div>
+</div>
+<footer class="site-footer">New York · Día 2 de 3</footer>
+</body>
+</html>
