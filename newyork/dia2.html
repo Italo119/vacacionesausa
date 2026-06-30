@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Día 2 — Brooklyn & Downtown — New York</title>
+<link rel="stylesheet" href="../style.css">
+<style>
+  .day-hero{padding:50px 0 10px; position:relative;}
+  .day-hero::before{
+    content:'';
+    position:absolute; top:-30px; left:5%;
+    width:500px; height:300px;
+    background:radial-gradient(circle, rgba(232,98,63,0.14), transparent 65%);
+    pointer-events:none; z-index:0;
+  }
+  .day-hero .title-lg{font-size:clamp(34px,5vw,52px); position:relative; color:#fff;}
+  .day-hero .sub{font-size:14.5px; color:var(--ink-soft); margin-top:10px; max-width:560px; position:relative;}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a href="../index.html" class="brand-mark"><span class="star">✦</span> Vacaciones</a>
+  <div class="crumbs">
+    <a href="../index.html">Inicio</a>
+    <span class="sep">/</span>
+    <a href="index.html">New York</a>
+    <span class="sep">/</span>
+    <span class="current">Día 2</span>
+  </div>
+  <div class="day-pills">
+    <a href="dia1.html">Día 1</a>
+    <a href="dia2.html" class="active">Día 2</a>
+    <a href="dia3.html">Día 3</a>
+  </div>
+</header>
+
+<section class="day-hero">
+  <div class="wrap">
+    <div class="eyebrow">Día 2 · Historia y vistas épicas</div>
+    <h1 class="title-lg">Brooklyn & Downtown</h1>
+    <p class="sub">Cruzas el puente de Brooklyn, navegas hasta la Estatua de la Libertad y terminas en el distrito financiero con el 9/11 Memorial.</p>
+  </div>
+</section>
+
+<!-- MAPA -->
+<section class="map-section">
+  <div class="wrap">
+    <div class="map-card">
+      <svg viewBox="0 0 900 700" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="riverGrad2" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#2d5266"/>
+            <stop offset="1" stop-color="#234458"/>
+          </linearGradient>
+        </defs>
+        <rect width="900" height="700" fill="url(#riverGrad2)"/>
+
+        <!-- Manhattan landmass -->
+        <path d="M0,0 L460,0 L380,700 L0,700 Z" fill="#1b1f2a"/>
+        <!-- Brooklyn landmass -->
+        <path d="M560,0 L900,0 L900,700 L640,700 Z" fill="#1b1f2a"/>
+        <!-- Liberty Island -->
+        <circle cx="230" cy="560" r="34" fill="#2a4a3e"/>
+
+        <!-- street grids -->
+        <g stroke="#2c3040" stroke-width="2">
+          <line x1="40" y1="60" x2="430" y2="50"/>
+          <line x1="40" y1="140" x2="420" y2="135"/>
+          <line x1="40" y1="220" x2="410" y2="220"/>
+          <line x1="40" y1="300" x2="400" y2="305"/>
+        </g>
+        <g stroke="#2c3040" stroke-width="2">
+          <line x1="580" y1="60" x2="880" y2="60"/>
+          <line x1="580" y1="160" x2="880" y2="160"/>
+          <line x1="580" y1="260" x2="880" y2="260"/>
+        </g>
+
+        <!-- ROUTE PATH -->
+        <path d="M640,90 L700,180 L260,560 L300,300 L290,260 L260,225 L210,110" fill="none" stroke="#c84e3c" stroke-width="3" stroke-dasharray="8,7" opacity="0.55"/>
+
+        <!-- PIN 1 Brooklyn Bridge -->
+        <circle cx="500" cy="170" r="20" fill="#c84e3c" stroke="#fff" stroke-width="3"/>
+        <text x="500" y="177" text-anchor="middle" fill="#fff" font-size="17" font-weight="700" font-family="Fraunces, serif">1</text>
+        <text x="500" y="144" text-anchor="middle" fill="#f3f1ec" font-size="13" font-family="Inter" font-weight="700">Brooklyn Bridge</text>
+
+        <!-- PIN 2 Dumbo -->
+        <circle cx="640" cy="90" r="20" fill="#c84e3c" stroke="#fff" stroke-width="3"/>
+        <text x="640" y="97" text-anchor="middle" fill="#fff" font-size="17" font-weight="700" font-family="Fraunces, serif">2</text>
+        <text x="640" y="64" text-anchor="middle" fill="#f3f1ec" font-size="13" font-family="Inter" font-weight="700">Dumbo</text>
+
+        <!-- PIN 3 Statue of Liberty -->
+        <circle cx="230" cy="560" r="20" fill="#c84e3c" stroke="#fff" stroke-width="3"/>
+        <text x="230" y="567" text-anchor="middle" fill="#fff" font-size="17" font-weight="700" font-family="Fraunces, serif">3</text>
+        <text x="230" y="615" text-anchor="middle" fill="#f3f1ec" font-size="13" font-family="Inter" font-weight="700">Statue of Liberty</text>
+
+        <!-- PIN 4 Wall Street -->
+        <circle cx="300" cy="300" r="20" fill="#c84e3c" stroke="#fff" stroke-width="3"/>
+        <text x="300" y="307" text-anchor="middle" fill="#fff" font-size="17" font-weight="700" font-family="Fraunces, serif">4</text>
+        <text x="365" y="305" text-anchor="start" fill="#f3f1ec" font-size="13" font-family="Inter" font-weight="700">Wall Street</text>
+
+        <!-- PIN 5 Bolsa de NY -->
+        <circle cx="290" cy="260" r="20" fill="#c84e3c" stroke="#fff" stroke-width="3"/>
+        <text x="290" y="267" text-anchor="middle" fill="#fff" font-size="17" font-weight="700" font-family="Fraunces, serif">5</text>
+        <text x="355" y="260" text-anchor="start" fill="#f3f1ec" font-size="13" font-family="Inter" font-weight="700">Bolsa de NY</text>
+
+        <!-- PIN 6 Charging Bull -->
+        <circle cx="260" cy="225" r="20" fill="#c84e3c" stroke="#fff" stroke-width="3"/>
+        <text x="260" y="232" text-anchor="middle" fill="#fff" font-size="17" font-weight="700" font-family="Fraunces, serif">6</text>
+        <text x="195" y="230" text-anchor="end" fill="#f3f1ec" font-size="13" font-family="Inter" font-weight="700">Charging Bull</text>
+
+        <!-- PIN 7 9/11 Memorial -->
+        <circle cx="210" cy="110" r="20" fill="#c84e3c" stroke="#fff" stroke-width="3"/>
+        <text x="210" y="117" text-anchor="middle" fill="#fff" font-size="17" font-weight="700" font-family="Fraunces, serif">7</text>
+        <text x="210" y="84" text-anchor="middle" fill="#f3f1ec" font-size="13" font-family="Inter" font-weight="700">9/11 Memorial</text>
+
+        <text x="800" y="690" text-anchor="end" fill="#7faec8" font-size="13" font-family="Inter" font-weight="600">BROOKLYN</text>
+        <text x="100" y="690" text-anchor="start" fill="#7faec8" font-size="13" font-family="Inter" font-weight="600">MANHATTAN</text>
+      </svg>
+    </div>
+
+    <div class="map-route-list">
+      <a href="#s1" class="route-chip"><span class="route-num">1</span> Brooklyn Bridge</a>
+      <a href="#s2" class="route-chip"><span class="route-num">2</span> Dumbo</a>
+      <a href="#s3" class="route-chip"><span class="route-num">3</span> Statue of Liberty</a>
+      <a href="#s4" class="route-chip"><span class="route-num">4</span> Wall Street</a>
+      <a href="#s5" class="route-chip"><span class="route-num">5</span> Bolsa de NY</a>
+      <a href="#s6" class="route-chip"><span class="route-num">6</span> Charging Bull</a>
+      <a href="#s7" class="route-chip"><span class="route-num">7</span> 9/11 Memorial</a>
+    </div>
+  </div>
+</section>
+
+<!-- DETALLE -->
+<section class="stops-section">
+  <div class="wrap">
+
+    <div class="stop-detail" id="s1">
+      <div class="stop-detail-img" style="background-image:url('https://images.unsplash.com/photo-1543716091-a840c05249ec?w=500&q=80')">
+        <div class="stop-detail-num">1</div>
+      </div>
+      <div class="stop-detail-body">
+        <div class="stop-detail-time">9:00 AM</div>
+        <div class="stop-detail-name">Brooklyn Bridge</div>
+        <p class="stop-detail-desc">Cruza el puente caminando desde Manhattan — unos 30 minutos de una de las caminatas más icónicas del mundo, con vistas al skyline y al East River.</p>
+        <div class="ticket-box free">
+          <div class="ico">✅</div>
+          <div class="txt"><strong>Entrada gratuita</strong>Puente peatonal público.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="stop-detail" id="s2">
+      <div class="stop-detail-img" style="background-image:url('https://images.unsplash.com/photo-1496588152823-86ff7695e68f?w=500&q=80')">
+        <div class="stop-detail-num">2</div>
+      </div>
+      <div class="stop-detail-body">
+        <div class="stop-detail-time">10:00 AM</div>
+        <div class="stop-detail-name">Dumbo</div>
+        <p class="stop-detail-desc">El barrio más fotogénico de Brooklyn. La foto clásica del puente entre los edificios se toma en Washington St con Water St.</p>
+        <div class="ticket-box free">
+          <div class="ico">✅</div>
+          <div class="txt"><strong>Acceso libre</strong>Barrio público — solo caminar y fotografiar.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="stop-detail" id="s3">
+      <div class="stop-detail-img" style="background-image:url('https://images.unsplash.com/photo-1605130284535-11dd9eedc58a?w=500&q=80')">
+        <div class="stop-detail-num">3</div>
+      </div>
+      <div class="stop-detail-body">
+        <div class="stop-detail-time">12:00 PM</div>
+        <div class="stop-detail-name">Statue of Liberty</div>
+        <p class="stop-detail-desc">El símbolo más icónico de Estados Unidos. El ferry sale desde Battery Park hacia Liberty Island. Si tienes acceso a la corona, la vista es incomparable.</p>
+        <div class="ticket-box">
+          <div class="ico">🎟️</div>
+          <div class="txt"><strong>Ticket obligatorio</strong>Reserva con varias semanas de anticipación — se agota rápido. <a href="https://www.nps.gov/stli/index.htm" target="_blank">nps.gov/stli →</a></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="stop-detail" id="s4">
+      <div class="stop-detail-img" style="background-image:url('https://images.unsplash.com/photo-1559717865-a99cac1c95d8?w=500&q=80')">
+        <div class="stop-detail-num">4</div>
+      </div>
+      <div class="stop-detail-body">
+        <div class="stop-detail-time">3:00 PM</div>
+        <div class="stop-detail-name">Wall Street</div>
+        <p class="stop-detail-desc">El corazón financiero del mundo. Camina por la calle histórica entre rascacielos centenarios y el bullicio del distrito.</p>
+        <div class="ticket-box free">
+          <div class="ico">✅</div>
+          <div class="txt"><strong>Acceso libre</strong>Calle pública, sin costo.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="stop-detail" id="s5">
+      <div class="stop-detail-img" style="background-image:url('https://images.unsplash.com/photo-1559717865-a99cac1c95d8?w=500&q=80')">
+        <div class="stop-detail-num">5</div>
+      </div>
+      <div class="stop-detail-body">
+        <div class="stop-detail-time">3:20 PM</div>
+        <div class="stop-detail-name">Bolsa de Nueva York (NYSE)</div>
+        <p class="stop-detail-desc">La fachada neoclásica del New York Stock Exchange, una de las imágenes más reconocibles del distrito financiero.</p>
+        <div class="ticket-box free">
+          <div class="ico">✅</div>
+          <div class="txt"><strong>Solo fachada exterior</strong>El interior no es accesible al público general.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="stop-detail" id="s6">
+      <div class="stop-detail-img" style="background-image:url('https://images.unsplash.com/photo-1559717865-a99cac1c95d8?w=500&q=80')">
+        <div class="stop-detail-num">6</div>
+      </div>
+      <div class="stop-detail-body">
+        <div class="stop-detail-time">3:45 PM</div>
+        <div class="stop-detail-name">Charging Bull</div>
+        <p class="stop-detail-desc">El famoso toro de bronce en Bowling Green. Suele haber fila para la foto clásica — un poco de paciencia vale la pena.</p>
+        <div class="ticket-box free">
+          <div class="ico">✅</div>
+          <div class="txt"><strong>Entrada gratuita</strong>Escultura pública al aire libre.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="stop-detail" id="s7">
+      <div class="stop-detail-img" style="background-image:url('https://images.unsplash.com/photo-1605130284535-11dd9eedc58a?w=500&q=80')">
+        <div class="stop-detail-num">7</div>
+      </div>
+      <div class="stop-detail-body">
+        <div class="stop-detail-time">4:30 PM</div>
+        <div class="stop-detail-name">9/11 Memorial & Museum</div>
+        <p class="stop-detail-desc">Las piscinas reflectantes sobre las huellas de las Torres Gemelas. Una de las experiencias más emotivas de Nueva York — reserva al menos 1.5 horas.</p>
+        <div class="ticket-box">
+          <div class="ico">🎟️</div>
+          <div class="txt"><strong>Ticket recomendado</strong>El memorial exterior es gratis, pero el museo requiere ticket con horario. <a href="https://www.911memorial.org" target="_blank">911memorial.org →</a></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="wrap">
+  <div class="day-nav-footer">
+    <a href="dia1.html" class="day-nav-btn">
+      <div class="lbl">← Anterior</div>
+      <div class="ttl">Día 1 — Harlem & Midtown</div>
+    </a>
+    <a href="dia3.html" class="day-nav-btn next">
+      <div class="lbl">Siguiente →</div>
+      <div class="ttl">Día 3 — West Side & Downtown</div>
+    </a>
+  </div>
+</div>
+
+<footer class="site-footer">New York · Día 2 de 3</footer>
+
+</body>
+</html>
